@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 300;
+}
+li {
+    padding: 0 5px 0 5px;
+    font-weight: bold;
+}
+
+#searchCity {
+    border-color: cornflowerblue;
+}
+
+.matchSignUpButton {
+    margin-top: 7px;
+}
+

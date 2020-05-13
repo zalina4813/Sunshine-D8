@@ -13,10 +13,9 @@ Libraries​:
 ● Bootstrap
 ● Jquery
 ● API calls using AJAX
-●
 
 # APIs:
-● Yelp -- https://www.yelp.com/dataset○https://www.yelp.com/dataset/documentation/main○https://www.yelp.com/developers/documentation/v3/business_search
+● Yelp -- https://www.yelp.com/dataset○https://www.yelp.com/dataset/documentation/main & https://www.yelp.com/developers/documentation/v3/business_search
 ● Mapbox -- https://docs.mapbox.com/api/maps/
 
 # Team Members 

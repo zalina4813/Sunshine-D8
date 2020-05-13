@@ -1,0 +1,49 @@
+body, html { 
+    background: linear-gradient(0deg, rgba(22, 148, 194, 0.742), rgba(4, 36, 48, 0.742)), 
+    /* The next 5 lines of code make the image stay centered on the page, no matter what the viewport size is */
+    url("../images/background-couple.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden; 
+}   
+
+
+.container-intro{
+    margin-top: 150px;
+    margin-left: 50px;
+    width: auto; 
+    padding-left: 30px;
+    margin-bottom: 200px;
+}
+
+h1{
+   font-family:  'Happy Monkey';font-size: 50px;
+   color: white;
+   letter-spacing: 5%;
+   line-height: 75px;
+}
+
+h2{
+    font-family:  'Italiana';font-size: 30px;
+    letter-spacing: 5%;
+    color: white;
+    padding-top: 15px;
+}
+
+h3{
+    font-family:  'Italiana';font-size: 25px;
+    letter-spacing: 5%;
+    color: white;
+    font-weight: bolder;
+    padding-top: 15px;
+}
+
+#signUp {
+    margin-top: 5px;
+}

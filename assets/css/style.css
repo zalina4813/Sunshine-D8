@@ -140,3 +140,111 @@ h3{
          width: 100%; 
      } 
  }
+ body
+     {
+     margin: 0;
+     padding: 0;
+     font-family: 'Happy Monkey';
+     background-attachment: fixed;
+}
+header
+{
+    position: relative;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    background: whitesmoke;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+
+}
+.logo
+{
+    color: #042430;
+    height: 50 px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 36px;
+    padding: 0 20px;
+    text-align: center;
+    box-sizing: border-box;
+    float: left;
+    font-weight: 500;
+    text-decoration: none;
+     
+}
+nav
+{
+    float: right;
+}
+.clearfix
+{
+    clear: both;
+}
+nav ul
+{
+margin: 0;
+padding: 0;
+display: flex;
+}
+nav ul li
+{
+    list-style: none;
+}
+nav ul li a 
+{
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20 px;
+    text-decoration: none;
+    font-family: sans-serif;
+    color:#042430;
+}
+nav ul li a.active,
+nav ul li a:hover
+{
+    background:#ffeb3b ;
+    transition: 0.5s;
+}
+.header
+{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+.search-field
+{
+    height: 50px;
+    padding: 10px;
+    border: navy;
+    border-radius: 25px;
+    outline: none;
+}
+.location
+{
+    width: 200px;
+}
+.business
+{
+    width: 400px;
+}
+.search-btn
+{
+    height: 50px;
+    width: 150px;
+    background: #ffeb3b;
+    border: none;
+    color: #1694C2;
+    border-radius: 25px;
+}
+.search-btn:hover{
+    background: #ffc107;
+    cursor: pointer;
+}
+.form-box
+{
+    background: rgba(0,0,0,0.5)
+}
+

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunshine D8</title>
-    <link rel="stylesheet" href="assets/reset.css">
+    <link rel="stylesheet" href="../Sunshine-D8/assets/css/reset.css">
     <!-- Custom Fonts  -->
     <link href='https://fonts.googleapis.com/css?family=Happy Monkey' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Italiana' rel='stylesheet'>
@@ -30,12 +30,15 @@
                 <h3>Date night was never so easy!</h3>
                 
                 <!-- This sets up for us to use a modal for the user to sign up -->
-                <button class= "btn btn-primary"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button> 
+                <button class= "btn btn-primary"onclick="document.getElementById('id01').style.display='block'" 
+                style="width:auto;">Sign Up</button> 
 
                     <!-- Got the model popup from https://www.geeksforgeeks.org/create-responsive-modal-sign-form-website/ -->
                     <div id="id01" class="modal"> 
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span> 
-                        <form class="modal-content animate" action="/action_page.php"> 
+                        <span onclick="document.getElementById('id01').style.display='none'" 
+                            class="close" title="Close Modal">×
+                        </span> 
+                        <form class="modal-content animate" action="./website.html"> 
                             <div class="container"> 
                                 <label><b>Email</b></label> 
                                 <input type="text" placeholder="Enter Email" name="email" required> 
@@ -44,13 +47,16 @@
                                 <input type="password" placeholder="Enter Password" name="psw" required> 
                             
                                 <label><b>Repeat Password</b></label> 
+                                <p>Pass Reqs</p>
                                 <input type="password" placeholder="Repeat Password" name="psw-repeat" required> 
-                                <input type="checkbox"> Remember me 
-                                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> 
                             
                                 <div class="clearfix"> 
-                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> 
-                                    <button type="submit" class="signupbtn">Sign Up</button> 
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" 
+                                        class="btn btn-secondary cancelbtn">Cancel
+                                    </button> 
+                                    <!-- <button class="btn btn-primary signupbtn"> -->
+                                        <a href= "./website.html" class= "btn btn-primary signupbtn">Sign Up</a>
+                                    <!-- </button>  -->
                                 </div> 
                             </div> 
                         </form> 

@@ -68,16 +68,20 @@ h3{
      cursor: pointer; 
      width: 100%; 
  } 
- /*set styles for the cancel button*/ 
- .cancelbtn { 
-     padding: 14px 20px; 
-     background-color: #ffffff; 
- } 
+ 
+ .cancelbtn {
+     margin-right: 10px;
+ }
+
+ .signupbtn {
+     margin-top: 8px;
+ }
+
  /*float cancel and signup buttons and add an equal width*/ 
  .cancelbtn, 
  .signupbtn { 
      float: left; 
-     width: 50% 
+     width: 25% 
  } 
  /*add padding to container elements*/ 
  .container { 
@@ -120,7 +124,7 @@ h3{
    
  .close:hover, 
  .close:focus { 
-     color: red; 
+     color: #1694C2; 
      cursor: pointer; 
  } 
    

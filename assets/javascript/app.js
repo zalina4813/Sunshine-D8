@@ -47,12 +47,37 @@ function displayRestaurants() {
         },
     };
 
-    $.ajax(settings).done(function (response) {
+
+    $.ajax(settings).then(function (response) {
         console.log(response);
 
 
 
+
+        // Team: We tried to get the data to display on screen, but weren't successful. Below is the gramework we started
+        var results = response.businesses;
+
+
+        for (var i = 0; i < results.length; i++) {
+
+            // creating and storing a div tag
+
+
+            // creating a paragraph tag with the result item's rating
+
+            var p = $("<p>").text("Name: " + results[i].name);
+            $(".content_display").append(p)
+        }
+
+        // console.log(location);
+        // if (response.length < 0) {
+
+
+
     });
+
+
+
 
 
 

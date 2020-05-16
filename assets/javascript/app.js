@@ -58,3 +58,33 @@ function displayRestaurants() {
 
 };
 $(document).on("click", ".search-btn-rest", displayRestaurants);
+
+
+// This function searches for activities 
+
+function displayActivities() {
+    console.log('Im here');
+    var search_act_type = $(".search_act_type").val();
+    var search_act_zip = $(".search_act_zip").val();
+    var settings = {
+        "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=active&term=" + search_act_type + "&location=" + search_act_zip,
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Authorization": "Bearer RbyX-dmkMHxvWjHEdJBshMdh3pj6Pd0e3IFg8l1C9oi3K6VS8IRi67-EKElLHLXtxedgbOhp06B2LMYXCdeIGf2JEmDbmLMmwc_50P77YlW1jYTiFaJQbUt9--u-XnYx",
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+        },
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+
+
+
+    });
+
+
+
+};
+$(document).on("click", ".search-btn-act", displayActivities);

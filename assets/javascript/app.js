@@ -18,7 +18,7 @@ $('document').ready(function () {
     var modal = document.getElementById('id01');
 
     window.onclick = function (event) {
-        preventDefault();
+        // preventDefault();
         if (event.target == modal) {
             modal.style.display = "none";
         }
@@ -34,8 +34,10 @@ $('document').ready(function () {
 
 function displayRestaurants() {
     console.log('Im here');
+    var search_rest_type = $(".search_rest_type").val();
+    var search_rest_zip = $(".search_rest_zip").val();
     var settings = {
-        "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Florida&term=restuarants",
+        "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=restaurants&term=" + search_rest_type + "&location=" + search_rest_zip,
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -47,9 +49,12 @@ function displayRestaurants() {
 
     $.ajax(settings).done(function (response) {
         console.log(response);
+
+
+
     });
 
 
 
 };
-$(document).on("click", ".search-btn", displayRestaurants);
+$(document).on("click", ".search-btn-rest", displayRestaurants);

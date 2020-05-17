@@ -67,7 +67,7 @@ function displayRestaurants() {
         // console.log(location);
         // if (response.length < 0) {
 
-
+            
 
     });
 
@@ -77,7 +77,7 @@ function displayRestaurants() {
 
 
 };
-$(document).on("click", ".search-btn-rest", displayRestaurants);
+$(document).on("click", ".search-btn-rest-none", displayRestaurants);
 
 
 // This function searches for activities 

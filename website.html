@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    
     <header>
         <a href="#" class="logo">Sunshine D8</a>
         <div class="menu-toggle"></div>
@@ -29,28 +30,37 @@
         </nav>
         <div class="clearfix"></div>
     </header>
+    <!-- Modal -->
 
-    <div class="header">
-        <form>
-            <h1>Find Resturants Near You</h1>
-            <div class="form-box">
-                <input type="text" class="search_rest_type" placeholder="What kind of food do you want to eat?">
-
-                <input type="text" class="search_rest_zip" placeholder="Zip Code">
-                <button class="search-btn-rest" type="button">Search </button>
-
+    <div class="container">
+        <div class="row"> 
+            <div class="col-md-6"  >
+                <div class="header">
+                    <form method="GET" target="_self" action="restaurants.html">
+                        <h1>Find Restaurants Near You</h1>
+                        <div class="form-box">
+                            <input id="search_rest_type" name="search_rest_type" type="text" class="search_rest_type form-control" placeholder="What kind of food do you want to eat?">
+    
+                            <input id="search_rest_zip" name="search_rest_zip" type="text" class="search_rest_zip form-control" placeholder="Zip Code">
+                            <button class="search-btn-rest btn btn-primary" type="submit">Search </button>
+                        </div>
+                    </form>
+                </div>   
             </div>
-        </form>
-
-        <h1>Find Activites Near You</h1>
-        <div class="form-box">
-            <input type="text" class="search_act_type" placeholder="What kind of activity are you up for?">
-
-            <input type="text" class="search_act_zip" placeholder="Zip Code">
-
-            <button class="search-btn-act" type="button">Search</button>
+            <div class="col-md-6">
+                <div class="header">
+                    <form>
+                        <h1>Find Activities Near You</h1>
+                        <div class="form-box">
+                            <input type="text" class="search_act_type form-control" placeholder="What kind of activity are you up for?">
+    
+                            <input type="text" class="search_act_zip form-control" placeholder="Zip Code">
+                            <button class="search-btn-act btn btn-primary" type="button" data-toggle="modal" >Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        </form>
     </div>
 
 
@@ -66,8 +76,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="./assets/javascript/app.js"></script>
+    
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./assets/javascript/app.js"></script>
 </body>
 
 </html>

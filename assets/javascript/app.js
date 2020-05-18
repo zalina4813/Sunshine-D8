@@ -4,7 +4,6 @@
 
 $('document').ready(function () {
 
-
     $('#searchCity').keypress(function (e) {
         // Waiting for the user to press the enter key
         if (e.keyCode === 13) {
@@ -23,10 +22,6 @@ $('document').ready(function () {
             modal.style.display = "none";
         }
     }
-
-
-
-
 });
 
 
@@ -54,7 +49,7 @@ function displayRestaurants() {
 
 
 
-        // Team: We tried to get the data to display on screen, but weren't successful. Below is the gramework we started
+        // Team: We tried to get the data to display on screen, but weren't successful. Below is the framework we started
         var results = response.businesses;
 
 
@@ -72,7 +67,7 @@ function displayRestaurants() {
         // console.log(location);
         // if (response.length < 0) {
 
-
+            
 
     });
 
@@ -82,7 +77,7 @@ function displayRestaurants() {
 
 
 };
-$(document).on("click", ".search-btn-rest", displayRestaurants);
+$(document).on("click", ".search-btn-rest-none", displayRestaurants);
 
 
 // This function searches for activities 

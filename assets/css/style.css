@@ -8,11 +8,18 @@ body, html {
     background-size: cover;
     width: 100%;
     height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow: hidden; 
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    font-family: 'Happy Monkey';
 }   
 
+/* Makes it so that when the "links" on the navbar are hovered over
+the blue underline doesn't show up for the user */
+a,
+a:hover {
+    text-decoration: none;
+}
 
 .container-intro{
     margin-top: 150px;
@@ -49,106 +56,110 @@ h3{
 }
 
 /* Got this modal css from https://www.geeksforgeeks.org/create-responsive-modal-sign-form-website/ */
- /*add full-width input fields*/ 
- input[type=text], 
- input[type=password] { 
-     width: 100%; 
-     padding: 12px 20px; 
-     margin: 8px 0; 
-     display: inline-block; 
-     border: 2px solid #ccc; 
-     box-sizing: border-box; 
- } 
- /* set a style for all buttons*/ 
- button { 
-     background-color: #2196f3; 
-     color: black; 
-     padding: 14px 20px; 
-     margin: 8px 0; 
-     cursor: pointer; 
-     width: 100%; 
- } 
- 
- .cancelbtn {
-     margin-right: 10px;
- }
+/*add full-width input fields*/ 
+input[type=text], 
+input[type=password] { 
+    width: 100%; 
+    padding: 12px 20px; 
+    margin: 8px 0; 
+    display: inline-block; 
+    border: 2px solid #ccc; 
+    box-sizing: border-box; 
+} 
 
- .signupbtn {
-     margin-top: 8px;
- }
+/* set a style for all buttons*/ 
+button { 
+    background-color: #2196f3; 
+    color: black; 
+    padding: 14px 20px; 
+    margin: 8px 0; 
+    cursor: pointer; 
+    width: 100%; 
+} 
 
- /*float cancel and signup buttons and add an equal width*/ 
- .cancelbtn, 
- .signupbtn { 
-     float: left; 
-     width: 25% 
- } 
- /*add padding to container elements*/ 
- .container { 
-     padding: 16px; 
- } 
- /*define the modal’s background*/ 
-   
- .modal { 
-     display: none; 
-     position: fixed; 
-     z-index: 1; 
-     left: 0; 
-     top: 0; 
-     width: 100%; 
-     height: 100%; 
-     overflow: auto; 
-     background-color: rgb(0, 0, 0); 
-     background-color: rgba(0, 0, 0, 0.4); 
-     padding-top: 60px; 
- } 
- /*define the modal-content background*/ 
-   
- .modal-content { 
-     background-color: #fefefe; 
-     margin: 5% auto 15% auto; 
-     border: 1px solid #888; 
-     width: 80%; 
- } 
- /*define the close button*/ 
-   
- .close { 
-     position: absolute; 
-     right: 35px; 
-     top: 15px; 
-     color: #000; 
-     font-size: 40px; 
-     font-weight: bold; 
- } 
- /*define the close hover and focus effects*/ 
-   
- .close:hover, 
- .close:focus { 
-     color: #1694C2; 
-     cursor: pointer; 
- } 
-   
- .clearfix::after { 
-     content: ""; 
-     clear: both; 
-     display: table; 
- } 
-   
- @media screen and (max-width: 300px) { 
-     .cancelbtn, 
-     .signupbtn { 
-         width: 100%; 
-     } 
- }
- body
-     {
-     margin: 0;
-     padding: 0;
-     font-family: 'Happy Monkey';
-     background-attachment: fixed;
+.cancelbtn {
+    margin-right: 10px;
 }
-header
-{
+
+.signupbtn {
+    margin-top: 8px;
+}
+
+/*float cancel and signup buttons and add an equal width*/ 
+.cancelbtn, 
+.signupbtn { 
+    float: left; 
+    width: 25% 
+} 
+
+/*add padding to container elements*/ 
+.container { 
+    padding: 16px; 
+} 
+
+/*define the modal’s background*/ 
+.modal { 
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0, 0, 0); 
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding-top: 60px; 
+} 
+
+/*define the modal-content background*/ 
+.modal-content { 
+    background-color: #fefefe; 
+    margin: 5% auto 15% auto; 
+    border: 1px solid #888; 
+    width: 80%; 
+} 
+
+/*define the close button*/ 
+.close { 
+    position: absolute; 
+    right: 35px; 
+    top: 15px; 
+    color: #000; 
+    font-size: 40px; 
+    font-weight: bold; 
+} 
+
+/*define the close hover and focus effects*/ 
+.close:hover, 
+.close:focus { 
+    color: #1694C2; 
+    cursor: pointer; 
+} 
+   
+.clearfix::after { 
+    content: ""; 
+    clear: both; 
+    display: table; 
+} 
+   
+@media screen and (max-width: 300px) { 
+    .cancelbtn, 
+    .signupbtn { 
+        width: 100%; 
+    } 
+}
+
+/* Don't know if we need this styling, so I just moved the font-family up top the the body, html tags */
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Happy Monkey';
+    background-attachment: fixed;
+} */
+
+/* Deals with how the navbar looks on the app */
+header {
     position: relative;
     max-width: 1200px;
     margin: 20px auto;
@@ -157,12 +168,11 @@ header
     box-sizing: border-box;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0,0,0,.2);
-
 }
-.logo
-{
+
+.logo {
     color: #042430;
-    height: 50 px;
+    height: 50px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 36px;
     padding: 0 20px;
@@ -171,28 +181,33 @@ header
     float: left;
     font-weight: 500;
     text-decoration: none;
-     
 }
-nav
-{
+
+/* Keeps the navbar items to the right of the header */
+nav {
     float: right;
 }
-.clearfix
-{
+
+/* Centers the text in the navbar list and put space between the items */
+.navbarSpacing {
+    margin: 5px 5px 0 3px;
+}
+
+.clearfix {
     clear: both;
 }
-nav ul
-{
+
+nav ul {
 margin: 0;
 padding: 0;
 display: flex;
 }
-nav ul li
-{
+
+nav ul li {
     list-style: none;
 }
-nav ul li a 
-{
+
+nav ul li a  {
     display: block;
     margin: 10px 0;
     padding: 10px 20 px;
@@ -200,38 +215,44 @@ nav ul li a
     font-family: sans-serif;
     color:#042430;
 }
+
+/* When the user hovers over the a-tag the box surrounding the text will turn yellow,
+took out the color for now */
 nav ul li a.active,
-nav ul li a:hover
-{
-    background:#ffeb3b ;
+nav ul li a:hover {
+    /* background:#ffeb3b ; */
     transition: 0.5s;
 }
-.header
-{
-    height: 100vh;
+
+.userInputheader {
+    height: 75vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
 }
-.search-field
-{
+
+/* .searchcontainer{
+    margin-bottom: 100px;
+} */
+
+.search-field {
     height: 50px;
     padding: 10px;
     border: navy;
     border-radius: 25px;
     outline: none;
 }
-.location
-{
+
+.location {
     width: 200px;
 }
-.business
-{
+
+.business {
     width: 400px;
 }
-.search-btn
-{
+
+.search-btn {
     height: 50px;
     width: 150px;
     background: #ffeb3b;
@@ -239,12 +260,13 @@ nav ul li a:hover
     color: #1694C2;
     border-radius: 25px;
 }
+
 .search-btn:hover{
     background: #ffc107;
     cursor: pointer;
 }
-.form-box
-{
+
+.form-box {
     background: rgba(0,0,0,0.5);
     padding: 10px;
 }

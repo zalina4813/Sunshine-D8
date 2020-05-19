@@ -21,7 +21,8 @@ function buildSettingsForRestaurantSearch(foodType, zipCode) {
     console.log('Im here'); // will be removed later. just testing the code executes
     
     var settings = {
-        "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=restaurants&term=" + foodType + "&location=" + zipCode,
+        "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=restaurants&term=" + 
+        foodType + "&location=" + zipCode + "&limit=10",
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -37,7 +38,7 @@ function buildSettingsForRestaurantSearch(foodType, zipCode) {
 // using a list of restaurants from the yelp api, we will display a list of restaurants on the search page for restaurants.
 function buildRestaurantList(list) {
 
-    var ul = $('ul');
+    var ul = $('<div>');
     for(var i = 0; i < list.length; i++) {
         var restaurant = ul.append('<li>'+list[i].name+'</li>')
     }

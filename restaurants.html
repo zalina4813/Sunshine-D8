@@ -20,30 +20,42 @@
     
     <header>
         <a href="#" class="logo">Sunshine D8</a>
+
         <div class="menu-toggle"></div>
+
         <nav>
             <ul>
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Restaurants</a></li>
-                <li><a href="#">Activities</a></li>
+                <li class= "navbarSpacing"><a href="#" class="active">Home</a></li>
+                <li class= "navbarSpacing"><a href="#">Restaurants</a></li>
+                <li class= "navbarSpacing"><a href="#">Activities</a></li>
             </ul>
         </nav>
+
         <div class="clearfix"></div>
     </header>
+
     <div class="container">
+
         <div class="row">
             <div class="col-md-12">
+
                 <div class="card" style="width: 18rem;">
+
                     <div class="card-header">
-                      Restaurants Found
+                        Restaurants Found
                     </div>
+
                     <div id="restaurant-list">
 
                     </div>
-                  </div>
+
+                </div>
+
             </div>
         </div>
+
     </div>
+
      <!-- Top 3 are for bootstrap uses, bottom 2 are our java ref and for ajax, not sure if bootstrap uses everything -->
      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -78,6 +90,8 @@
 
                 // then we append the new list
                 $('#restaurant-list').append(listOfRestaurants);
+
+                console.log(response.businesses)
 
             });
 

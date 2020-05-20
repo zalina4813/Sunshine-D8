@@ -56,47 +56,19 @@
 
     </div>
 
-     <!-- Top 3 are for bootstrap uses, bottom 2 are our java ref and for ajax, not sure if bootstrap uses everything -->
-     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-     crossorigin="anonymous"></script>
+    <!-- Top 3 are for bootstrap uses, bottom 2 are our java ref and for ajax, not sure if bootstrap uses everything -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-     crossorigin="anonymous"></script>
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-     crossorigin="anonymous"></script>
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
  
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./assets/javascript/search.js"></script>
-    <script>
-        $(document).ready(function(){
-            // grab the restaurant type and the zip code from the query strings in the url
-            var foodType = getQueryVariable('search_rest_type');
-            var zipCode = getQueryVariable('search_rest_zip');
-            
-            
-            //we pass in the settings that come from the build settings function and pass it into an ajax call.
-            //then we wait for the response to come back before displaying the restaurant list;
-            $.ajax(buildSettingsForRestaurantSearch(foodType, zipCode)).then(function(response) {
-                    
-                //using the response list, we build a list of restaurants and put them in an un-ordered list.
-                var listOfRestaurants = buildRestaurantList(response.businesses);
+    <script src="./assets/javascript/app.js"></script>
 
-                //once we have the list of restaurants, we append them to the display div. 
-                //But first we have to empty the previous list in the display div
-
-                $('restaurant-list').empty();
-
-                // then we append the new list
-                $('#restaurant-list').append(listOfRestaurants);
-
-                console.log(response.businesses)
-
-            });
-
-            
-        });
-    </script>
 </body>
 </html>

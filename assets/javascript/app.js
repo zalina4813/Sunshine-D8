@@ -127,7 +127,7 @@ function buildRestaurantList(list) {
         // This will add the names of the restaurants in the users area
         var restaurantName= document.createElement('div');
         restaurantName= list[i].name;
-        containing.append(restaurantName);
+        containing.append(restaurantName).addClass('bluu');
 
         linebreaks();
         
@@ -151,7 +151,7 @@ function buildRestaurantList(list) {
 
         // Creates a link for the user to click on to bring them to the review page
         // https://www.geeksforgeeks.org/how-to-create-a-link-in-javascript/
-        YelpReviewPage= list[i].url;
+        YelpReviewPageURL= list[i].url;
         
         // Create anchor element. 
         var YelpReview= document.createElement('a');  
@@ -166,7 +166,7 @@ function buildRestaurantList(list) {
         YelpReview.title = "Click Here to See Reviews";  
           
         // Set the href property. 
-        YelpReview.href = YelpReviewPage;  
+        YelpReview.href = YelpReviewPageURL;  
 
         // Review Page will open up on another tab when the link is clicked
         YelpReview.target= ('_blank')
@@ -180,6 +180,6 @@ function buildRestaurantList(list) {
     
 }
 
-// ------------------------ Activities ----------------------------
+// ------------------------ Activities -------------------------------
 
 });

@@ -46,7 +46,6 @@ $('#PasswordVerify, #EmailInput').on('click', function() {
 var foodType = getQueryVariable('search_rest_type');
 var zipCode = getQueryVariable('search_rest_zip');
 
-
 //we pass in the settings that come from the build settings function and pass it into an ajax call.
 //then we wait for the response to come back before displaying the restaurant list;
 $.ajax(buildSettingsForRestaurantSearch(foodType, zipCode)).then(function(response) {
@@ -57,14 +56,29 @@ $.ajax(buildSettingsForRestaurantSearch(foodType, zipCode)).then(function(respon
     //once we have the list of restaurants, we append them to the display div. 
     //But first we have to empty the previous list in the display div
 
-    $('restaurant-list').empty();
-
-    // then we append the new list
-    $('#restaurant-list').append(listOfRestaurants);
-
     console.log(response.businesses)
 
 });
+
+// This function will build ajax settings to be used on the yelp api for a requested restaurant type in a specific zipcode.
+// we pass the food type and zipcode in as parameters
+// this function uses will then return an appropriate settings object for our ajax call to yelp
+function buildSettingsForRestaurantSearch(foodType, zipCode) {
+    
+    var settings = {
+        "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=restaurants&term=" + 
+        foodType + "&location=" + zipCode + "&limit=10",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Authorization": "Bearer RbyX-dmkMHxvWjHEdJBshMdh3pj6Pd0e3IFg8l1C9oi3K6VS8IRi67-EKElLHLXtxedgbOhp06B2LMYXCdeIGf2JEmDbmLMmwc_50P77YlW1jYTiFaJQbUt9--u-XnYx",
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+        },
+    };
+
+    return settings;
+}
 
 // stackoverflow https://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
 // this function will parse a query string parameter from the url and return the data of that parameter to you
@@ -85,50 +99,87 @@ function getQueryVariable(variable) {
     console.log('Query string paramter %s not found', variable);
 }
 
-// This function will build ajax settings to be used on the yelp api for a requested restaurant type in a specific zipcode.
-// we pass the food type and zipcode in as parameters
-// this function uses will then return an appropriate settings object for our ajax call to yelp
-function buildSettingsForRestaurantSearch(foodType, zipCode) {
-    
-
-    console.log('Im here'); // will be removed later. just testing the code executes
-    
-    var settings = {
-        "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=restaurants&term=" + 
-        foodType + "&location=" + zipCode + "&limit=10",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-            "Authorization": "Bearer RbyX-dmkMHxvWjHEdJBshMdh3pj6Pd0e3IFg8l1C9oi3K6VS8IRi67-EKElLHLXtxedgbOhp06B2LMYXCdeIGf2JEmDbmLMmwc_50P77YlW1jYTiFaJQbUt9--u-XnYx",
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json",
-        },
-    };
-
-    return settings;
-}
-
 // using a list of restaurants from the yelp api, we will display a list of restaurants on the search page for restaurants.
 function buildRestaurantList(list) {
 
-    var ul = $('<div>');
     for(var i = 0; i < list.length; i++) {
 
-        // This will add the names of the restaurants in the users area
-        var name = ul.append(list[i].name)
+        // This function will make it so the text that's generated to the containing div
+        // isn't all mushed together
+        function linebreaks() {
+
+        var linebreaks= document.createElement('br');
+        containing.append(linebreaks);
+
+        }
+
+        // This is what everything is appended to so that it can be sent to the webpage
+        var containing= $('<div>').addClass('row1');
+
         // This adds the images that Yelp provides
-        // var images= document.createElement('img')
-        // images.src= list[i].image_url
-        // var imageslist= ul.append(images)
+        var image= document.createElement('img');
+        image.src= list[i].image_url;
+        containing.append(image);
+
+        // Appends the containing div to the div with the id stated below
+        $('#restaurant-list').append(containing);
+
+        // This will add the names of the restaurants in the users area
+        var restaurantName= document.createElement('div');
+        restaurantName= list[i].name;
+        containing.append(restaurantName);
+
+        linebreaks();
         
+        var restaurantAddress= document.createElement('div');
+        restaurantAddress= list[i].location.display_address;
+        containing.append('Address: ' + restaurantAddress);
+
+        linebreaks();
+
+        var restaurantNumber= document.createElement('div');
+        restaurantNumber= list[i].display_phone;
+        containing.append('Phone Number: ' + restaurantNumber);
+
+        linebreaks();
+
+        var restaurantRating= document.createElement('div');
+        restaurantRating= list[i].rating;
+        containing.append('Rating: ' + restaurantRating + ' stars');
+
+        linebreaks(); 
+
+        // Creates a link for the user to click on to bring them to the review page
+        // https://www.geeksforgeeks.org/how-to-create-a-link-in-javascript/
+        YelpReviewPage= list[i].url;
+        
+        // Create anchor element. 
+        var YelpReview= document.createElement('a');  
+                  
+        // Create the text node for anchor element. 
+        var link = document.createTextNode("Click Here to See Reviews"); 
+          
+        // Append the text node to anchor element. 
+        YelpReview.appendChild(link);  
+          
+        // Set the title. 
+        YelpReview.title = "Click Here to See Reviews";  
+          
+        // Set the href property. 
+        YelpReview.href = YelpReviewPage;  
+
+        // Review Page will open up on another tab when the link is clicked
+        YelpReview.target= ('_blank')
+          
+        // Append the anchor element to the body. 
+        containing.append(YelpReview);
+
     }
 
-    return ul;
+    return;
     
 }
 
 // ------------------------ Activities ----------------------------
-
-
 
 });

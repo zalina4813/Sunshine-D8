@@ -18,69 +18,65 @@
 
 <body>
 
-    <div class="container-intro">
+<div class="container-intro">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Date Night for Florida Couples</h1>
 
-        <div class="row">
+            <h2>Plan the perfect date night by finding top-rated restaurants and entertainnment in your city.</h2>
 
-            <div class="col-md-12">
+            <h3>Date night was never so easy!</h3>
 
-                <h1>Date Night for Florida Couples</h1>
+            <!-- This sets up for us to use a modal for the user to sign up -->
+            <button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'"
+                style="width:auto;">Sign Up</button>
 
-                <h2>Plan the perfect date night by finding top-rated restaurants and entertainnment in your city.</h2>
+            <!-- Got the model popup from https://www.geeksforgeeks.org/create-responsive-modal-sign-form-website/ -->
+            <div id="id01" class="modal">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                    title="Close Modal">×
+                </span>
+                <!-- This is the sign up form that will pop up inside of the modal -->
+                <form class="modal-content animate" action="./website.html">
+                    <div class="container">
 
-                <h3>Date night was never so easy!</h3>
+                        <label><b>Email</b></label>
+                        <input id= "EmailInput" type="text" placeholder="Enter Email" name="email" required>
 
-                <!-- This sets up for us to use a modal for the user to sign up -->
-                <button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'"
-                    style="width:auto;">Sign Up</button>
-
-                <!-- Got the model popup from https://www.geeksforgeeks.org/create-responsive-modal-sign-form-website/ -->
-                <div id="id01" class="modal">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                        title="Close Modal">×
-                    </span>
-                    <form class="modal-content animate" action="./website.html">
-                        <div class="container">
-
-                            <label><b>Email</b></label>
-                            <input id= "EmailInput" type="text" placeholder="Enter Email" name="email" required>
-
-                            <!-- This is a list of what the user needs to put in as a password -->
-                            <div id= "PasswordReqs">
-                                <b>Passwords must contain:</b>
-                                <br><br>
-                                <li>At least 8 characters</li>
-                                <li>One number 0-9</li>
-                                <li>A special symbol, including: !, @, #, $, &</li>
-                                <br>
-                            </div>
-
-                            <label><b>Password</b></label>
-                            <input id= "PasswordInput" type="password" placeholder="Enter Password" name="psw" required>
-
-                            <label><b>Repeat Password</b></label>
-                            
-                            <input id= "PasswordVerify" type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
-                            <div class="clearfix">
-
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                                    class="btn btn-secondary cancelbtn">Cancel
-                                </button>
-                                
-                                <a href="./website.html" class="btn btn-primary signupbtn">Sign Up</a>
-                                
-                            </div>
-
+                        <!-- This is a list of what the user needs to put in as a password -->
+                        <div id= "PasswordReqs">
+                            <b>Passwords must contain:</b>
+                            <br><br>
+                            <li>At least 8 characters</li>
+                            <li>One number 0-9</li>
+                            <li>A special symbol, including: !, @, #, $, &</li>
+                            <br>
                         </div>
-                    </form>
-                </div>
 
+                        <label><b>Password</b></label>
+                        <input id= "PasswordInput" type="password" placeholder="Enter Password" name="psw" required>
+
+                        <label><b>Repeat Password</b></label>
+                            
+                        <input id= "PasswordVerify" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+                        <div class="clearfix">
+
+                            <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                                class="btn btn-secondary cancelbtn">Cancel
+                            </button>
+                                
+                            <a href="./website.html" class="btn btn-primary signupbtn">Sign Up</a>
+                                
+                        </div>
+
+                    </div>
+                </form>
             </div>
 
         </div>
-
     </div>
+</div>
 
 
 
@@ -89,18 +85,18 @@
 
 
 
-    <!-- Top 3 are for bootstrap uses, bottom 2 are our java ref and for ajax, not sure if bootstrap uses everything -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src= "./assets/javascript/app.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Top 3 are for bootstrap uses, bottom 2 are our java ref and for ajax, not sure if bootstrap uses everything -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src= "./assets/javascript/app.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 
 </html>

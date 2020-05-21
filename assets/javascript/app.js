@@ -113,9 +113,18 @@ function buildRestaurantList(list) {
 
     var ul = $('<div>');
     for(var i = 0; i < list.length; i++) {
-        var restaurant = ul.append('<li>'+list[i].name+'</li>')
+
+        // This will add the names of the restaurants in the users area
+        var name = ul.append(list[i].name)
+        // This adds the images that Yelp provides
+        // var images= document.createElement('img')
+        // images.src= list[i].image_url
+        // var imageslist= ul.append(images)
+        
     }
+
     return ul;
+    
 }
 
 // ------------------------ Activities ----------------------------

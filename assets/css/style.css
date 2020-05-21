@@ -21,6 +21,14 @@ a:hover {
     text-decoration: none;
 }
 
+a {
+    color: white;
+}
+
+.navbartextColor {
+    color: white;
+}
+
 .container-intro{
     margin-top: 150px;
     margin-left: 50px;
@@ -141,21 +149,6 @@ button {
     clear: both; 
     display: table; 
 } 
-   
-@media screen and (max-width: 300px) { 
-    .cancelbtn, 
-    .signupbtn { 
-        width: 100%; 
-    } 
-}
-
-/* Don't know if we need this styling, so I just moved the font-family up top the the body, html tags */
-/* body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Happy Monkey';
-    background-attachment: fixed;
-} */
 
 /* Deals with how the navbar looks on the app */
 header {
@@ -163,14 +156,14 @@ header {
     max-width: 1200px;
     margin: 20px auto;
     padding: 10px;
-    background: whitesmoke;
+    background: #6b8d97;
     box-sizing: border-box;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0,0,0,.2);
 }
 
 .logo {
-    color: #042430;
+    color: white;
     height: 50px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 36px;
@@ -231,10 +224,6 @@ nav ul li a:hover {
     font-family: sans-serif;
 }
 
-/* .searchcontainer{
-    margin-bottom: 100px;
-} */
-
 .search-field {
     height: 50px;
     padding: 10px;
@@ -271,23 +260,25 @@ nav ul li a:hover {
 }
 
 .card {
+    color: white;
     background: none;
     width: 50%;
+    border: none;
 }
 
 .card-header {
     text-align: center;
-    background-color: white;
+    background-color: #6b8d97;
 }
 
 .row1 {
     padding: 10px;
     margin: 10px 0;
-    background: #1694C2;
+    background: #6b8d97;
 }
 
 .row1 img {
-    width: 50%;
+    width: 60%;
     height: 150px;
 }
 
@@ -298,11 +289,18 @@ nav ul li a:hover {
 
 
 
+@media screen and (max-width: 300px) { 
+    .cancelbtn, 
+    .signupbtn { 
+        width: 100%; 
+    } 
+}
+
 /* This makes it so the images don't look as bad when the screen size is changed */
 @media screen and (max-width: 769px) {
 
 .row1 img {
-    width: 50%;
+    width: 60%;
     height: 100px;
 }
 

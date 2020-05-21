@@ -104,31 +104,76 @@ function buildRestaurantList(list) {
 
     for(var i = 0; i < list.length; i++) {
 
-        // This is what everything is appended to
+        // This function will make it so the text that's generated to the containing div
+        // isn't all mushed together
+        function linebreaks() {
+
+        var linebreaks= document.createElement('br');
+        containing.append(linebreaks);
+
+        }
+
+        // This is what everything is appended to so that it can be sent to the webpage
         var containing= $('<div>').addClass('row1');
 
         // This adds the images that Yelp provides
         var image= document.createElement('img');
         image.src= list[i].image_url;
-        // This appends the image variable above to the containing div
         containing.append(image);
 
+        // Appends the containing div to the div with the id stated below
         $('#restaurant-list').append(containing);
 
         // This will add the names of the restaurants in the users area
         var restaurantName= document.createElement('div');
         restaurantName= list[i].name;
-        // This appends the name of the restaurant to the the containing div
         containing.append(restaurantName);
 
-        var linebreaks= document.createElement('br')
-        containing.append(linebreaks)
+        linebreaks();
         
-
         var restaurantAddress= document.createElement('div');
         restaurantAddress= list[i].location.display_address;
-        containing.append(restaurantAddress)
+        containing.append('Address: ' + restaurantAddress);
+
+        linebreaks();
+
+        var restaurantNumber= document.createElement('div');
+        restaurantNumber= list[i].display_phone;
+        containing.append('Phone Number: ' + restaurantNumber);
+
+        linebreaks();
+
+        var restaurantRating= document.createElement('div');
+        restaurantRating= list[i].rating;
+        containing.append('Rating: ' + restaurantRating + ' stars');
+
+        linebreaks(); 
+
+        // Creates a link for the user to click on to bring them to the review page
+        // https://www.geeksforgeeks.org/how-to-create-a-link-in-javascript/
+        YelpReviewPage= list[i].url;
         
+        // Create anchor element. 
+        var YelpReview= document.createElement('a');  
+                  
+        // Create the text node for anchor element. 
+        var link = document.createTextNode("Click Here to See Reviews"); 
+          
+        // Append the text node to anchor element. 
+        YelpReview.appendChild(link);  
+          
+        // Set the title. 
+        YelpReview.title = "Click Here to See Reviews";  
+          
+        // Set the href property. 
+        YelpReview.href = YelpReviewPage;  
+
+        // Review Page will open up on another tab when the link is clicked
+        YelpReview.target= ('_blank')
+          
+        // Append the anchor element to the body. 
+        containing.append(YelpReview);
+
     }
 
     return;

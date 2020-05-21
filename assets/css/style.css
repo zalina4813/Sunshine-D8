@@ -93,9 +93,8 @@ button {
 } 
 
 /*add padding to container elements*/ 
-.container { 
-    padding: 16px; 
-} 
+/* .container {  
+}  */
 
 /*define the modal’s background*/ 
 .modal { 
@@ -271,6 +270,40 @@ nav ul li a:hover {
     padding: 10px;
 }
 
+.card {
+    background: none;
+    width: 50%;
+}
+
 .card-header {
     text-align: center;
+    background-color: white;
+}
+
+.row1 {
+    padding: 10px;
+    margin: 10px 0;
+    background: #1694C2;
+}
+
+.row1 img {
+    width: 50%;
+    height: 150px;
+}
+
+.row1 div {
+    padding: 10px;
+    font-size: 20px;
+}
+
+
+
+/* This makes it so the images don't look as bad when the screen size is changed */
+@media screen and (max-width: 769px) {
+
+.row1 img {
+    width: 50%;
+    height: 100px;
+}
+
 }

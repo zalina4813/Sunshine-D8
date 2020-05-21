@@ -46,7 +46,6 @@ $('#PasswordVerify, #EmailInput').on('click', function() {
 var foodType = getQueryVariable('search_rest_type');
 var zipCode = getQueryVariable('search_rest_zip');
 
-
 //we pass in the settings that come from the build settings function and pass it into an ajax call.
 //then we wait for the response to come back before displaying the restaurant list;
 $.ajax(buildSettingsForRestaurantSearch(foodType, zipCode)).then(function(response) {
@@ -57,14 +56,29 @@ $.ajax(buildSettingsForRestaurantSearch(foodType, zipCode)).then(function(respon
     //once we have the list of restaurants, we append them to the display div. 
     //But first we have to empty the previous list in the display div
 
-    $('restaurant-list').empty();
-
-    // then we append the new list
-    $('#restaurant-list').append(listOfRestaurants);
-
     console.log(response.businesses)
 
 });
+
+// This function will build ajax settings to be used on the yelp api for a requested restaurant type in a specific zipcode.
+// we pass the food type and zipcode in as parameters
+// this function uses will then return an appropriate settings object for our ajax call to yelp
+function buildSettingsForRestaurantSearch(foodType, zipCode) {
+    
+    var settings = {
+        "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=restaurants&term=" + 
+        foodType + "&location=" + zipCode + "&limit=10",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Authorization": "Bearer RbyX-dmkMHxvWjHEdJBshMdh3pj6Pd0e3IFg8l1C9oi3K6VS8IRi67-EKElLHLXtxedgbOhp06B2LMYXCdeIGf2JEmDbmLMmwc_50P77YlW1jYTiFaJQbUt9--u-XnYx",
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+        },
+    };
+
+    return settings;
+}
 
 // stackoverflow https://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
 // this function will parse a query string parameter from the url and return the data of that parameter to you
@@ -85,50 +99,42 @@ function getQueryVariable(variable) {
     console.log('Query string paramter %s not found', variable);
 }
 
-// This function will build ajax settings to be used on the yelp api for a requested restaurant type in a specific zipcode.
-// we pass the food type and zipcode in as parameters
-// this function uses will then return an appropriate settings object for our ajax call to yelp
-function buildSettingsForRestaurantSearch(foodType, zipCode) {
-    
-
-    console.log('Im here'); // will be removed later. just testing the code executes
-    
-    var settings = {
-        "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=restaurants&term=" + 
-        foodType + "&location=" + zipCode + "&limit=10",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-            "Authorization": "Bearer RbyX-dmkMHxvWjHEdJBshMdh3pj6Pd0e3IFg8l1C9oi3K6VS8IRi67-EKElLHLXtxedgbOhp06B2LMYXCdeIGf2JEmDbmLMmwc_50P77YlW1jYTiFaJQbUt9--u-XnYx",
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json",
-        },
-    };
-
-    return settings;
-}
-
 // using a list of restaurants from the yelp api, we will display a list of restaurants on the search page for restaurants.
 function buildRestaurantList(list) {
 
-    var ul = $('<div>');
     for(var i = 0; i < list.length; i++) {
 
-        // This will add the names of the restaurants in the users area
-        var name = ul.append(list[i].name)
+        // This is what everything is appended to
+        var containing= $('<div>').addClass('row1');
+
         // This adds the images that Yelp provides
-        // var images= document.createElement('img')
-        // images.src= list[i].image_url
-        // var imageslist= ul.append(images)
+        var image= document.createElement('img');
+        image.src= list[i].image_url;
+        // This appends the image variable above to the containing div
+        containing.append(image);
+
+        $('#restaurant-list').append(containing);
+
+        // This will add the names of the restaurants in the users area
+        var restaurantName= document.createElement('div');
+        restaurantName= list[i].name;
+        // This appends the name of the restaurant to the the containing div
+        containing.append(restaurantName);
+
+        var linebreaks= document.createElement('br')
+        containing.append(linebreaks)
+        
+
+        var restaurantAddress= document.createElement('div');
+        restaurantAddress= list[i].location.display_address;
+        containing.append(restaurantAddress)
         
     }
 
-    return ul;
+    return;
     
 }
 
 // ------------------------ Activities ----------------------------
-
-
 
 });

@@ -33,49 +33,65 @@
             <div class="clearfix"></div>
     </header>
 
-    <div class="container">
+    <div class= "container centerchosenText"> 
+        <h1>Would You Like to See Restaurants or Activities in Your Area?
+        </h1>
+        <button class="search-btn-rest btn btn-primary chooseHere" 
+            onclick="document.getElementById('id01').style.display='block'"
+            style="width:auto;"> 
+            Choose Here! 
+        </button>
+    </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <!-- Restaurant Search  -->
+    <div id="id01" class="modal1">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+            title="Close Modal">×
+        </span>
 
-                <div class="userInputheader">
-                    <form method="GET" target="_self" action="restaurants.html">
-                        <h1>Find Restaurants Near You</h1>
-                        <div class="form-box">
-                            <input id="search_rest_type" name="search_rest_type" type="text"
-                                class="search_rest_type form-control"
-                                placeholder="What kind of food do you want to eat?">
+        <div class="container">
 
-                            <input id="search_rest_zip" name="search_rest_zip" type="text"
-                                class="search_rest_zip form-control" placeholder="Zip Code">
-                            <button class="search-btn-rest btn btn-primary" type="submit">Search </button>
-                        </div>
-                    </form>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Restaurant Search  -->
 
+                    <div class="userInputheader">
+                            <form method="GET" target="_self" action="restaurants.html">
+                            <h1>Find Restaurants Near You</h1>
+                            <div class="form-box">
+                                <input id="search_rest_type" name="search_rest_type" type="text"
+                                    class="search_rest_type form-control"
+                                    placeholder="What kind of food do you want to eat?">
+
+                                <input id="search_rest_zip" name="search_rest_zip" type="text"
+                                    class="search_rest_zip form-control" placeholder="Zip Code">
+                                <button class="search-btn-rest btn btn-primary" type="submit">Search </button>
+                            </div>
+                        </form>
+
+                    </div>
                 </div>
 
-            </div>
+                <div class="col-md-6">
+                    <!-- Activity Search  -->
+                    <div class="userInputheader">
+                        <form method="GET" target="_self" action="activities.html">
+                            <h1>Find Activities Near You</h1>
+                            <div class="form-box">
+                                <input id="search_act_type" name="search_act_type" type="text"
+                                    class="search_act_type form-control"
+                                    placeholder="What kind of activity are you up for?">
 
-            <div class="col-md-6">
-                <!-- Activity Search  -->
-                <div class="userInputheader">
-                    <form method="GET" target="_self" action="activities.html">
-                        <h1>Find Activities Near You</h1>
-                        <div class="form-box">
-                            <input id="search_act_type" name="search_act_type" type="text"
-                                class="search_act_type form-control"
-                                placeholder="What kind of activity are you up for?">
+                                <input id="search_act_zip" name="search_act_zip" type="text"
+                                    class="search_act_zip form-control" placeholder="Zip Code">
+                                <button class="search-btn-act btn btn-primary" type="submit">Search </button>
+                            </div>
+                        </form>
 
-                            <input id="search_act_zip" name="search_act_zip" type="text"
-                                class="search_act_zip form-control" placeholder="Zip Code">
-                            <button class="search-btn-act btn btn-primary" type="submit">Search </button>
-                        </div>
-                    </form>
+                    </div>
 
                 </div>
-
             </div>
+
         </div>
 
     </div>

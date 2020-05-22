@@ -320,6 +320,14 @@ nav ul li a:hover {
     font-size: 20px;
 }
 
+.modal {
+    z-index: 2000 !important;
+}
+
+.modal-title {
+    text-align: left;
+    background-color: white !important;
+}
 
 @media screen and (max-width: 601px) { 
 

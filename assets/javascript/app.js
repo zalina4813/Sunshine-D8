@@ -337,12 +337,12 @@ $('document').ready(function () {
 
     }
 
-
     
 
 
 
 });
+
 
 //this function validates that the restaurant search fields are populated before
 //submitting the restaurant search form
@@ -353,13 +353,20 @@ function validateRestaurantForm() {
     // the form.
     var searchRestType = document.forms["rest_search_form"]["search_rest_type"].value;
     if (searchRestType == "") {
-        alert("Please fill out restaurant type");
+        //alert("Please fill out restaurant type");
+        
+        $('#errorTitle').text('Restaurant Type Missing');
+        $('#errorMessage').text('Please fill out the restaurant type');
+        $('#errorModal').modal('show');
         return false;
     }   
 
     var searchRestZip = document.forms["rest_search_form"]["search_rest_zip"].value;
     if (searchRestZip == "") {
-        alert("Please fill out restaurant zip code");
+        
+        $('#errorTitle').text('Restaurant Zip Code Missing');
+        $('#errorMessage').text('Please fill out the restaurant zip code');
+        $('#errorModal').modal('show');
         return false;
     }   
 
@@ -374,14 +381,20 @@ function validateActivitiesForm() {
     //Check the activities search type field and make sure it's not empty.
     var searchRestType = document.forms["search_act_form"]["search_act_type"].value;
     if (searchRestType == "") {
-        alert("Please fill out activity type");
+        
+        $('#errorTitle').text('Activity Type Missing');
+        $('#errorMessage').text('Please fill out the activity type');
+        $('#errorModal').modal('show');
         return false;
     }   
 
     //check the activities zip code and make sure it's not empty.
     var searchRestZip = document.forms["search_act_form"]["search_act_zip"].value;
     if (searchRestZip == "") {
-        alert("Please fill out activity zip code");
+        
+        $('#errorTitle').text('Activity Zip Code Missing');
+        $('#errorMessage').text('Please fill out the activity zip code');
+        $('#errorModal').modal('show');
         return false;
     }   
 

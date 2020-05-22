@@ -7,6 +7,15 @@
     <title>Sunshine D8</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <!-- Custom Fonts  -->
+    <!-- Map Box API Info  -->
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
+    <script
+        src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet'
+        href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css'
+        type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Happy Monkey' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Italiana' rel='stylesheet'>
     <!-- Bootstrap Styling -->
@@ -27,26 +36,24 @@
             <nav>
                 <ul>
                     <li class="navbarSpacing">
-                        <a href="https://zalina4813.github.io/Sunshine-D8/website.html"class="navbartextColor">Home</a>
+                        <a href="https://zalina4813.github.io/Sunshine-D8/website.html" class="navbartextColor">Home</a>
                     </li>
                 </ul>
             </nav>
             <div class="clearfix"></div>
     </header>
 
-    <div class= "container centerchosenText"> 
+    <div class="container centerchosenText">
         <h1>Would You Like to See Restaurants or Activities in Your Area?
         </h1>
-        <button class="search-btn-rest btn btn-primary chooseHere" 
-            onclick="document.getElementById('id01').style.display='block'"
-            style="width:auto;"> 
-            Choose Here! 
+        <button class="search-btn-rest btn btn-primary chooseHere"
+            onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+            Choose Here!
         </button>
     </div>
 
     <div id="id01" class="modal1">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close"
-            title="Close Modal">×
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×
         </span>
 
         <div class="container">
@@ -56,7 +63,7 @@
                     <!-- Restaurant Search  -->
 
                     <div class="userInputheader">
-                            <form method="GET" target="_self" action="restaurants.html">
+                        <form method="GET" target="_self" action="restaurants.html">
                             <h1>Find Restaurants Near You</h1>
                             <div class="form-box">
                                 <input id="search_rest_type" name="search_rest_type" type="text"
@@ -64,11 +71,10 @@
                                     placeholder="What kind of food do you want to eat?" required>
 
                                 <input id="search_rest_zip" name="search_rest_zip" type="number"
-                                    class="search_rest_zip form-control" placeholder="Zip Code" 
+                                    class="search_rest_zip form-control" placeholder="Zip Code"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    type = "number"
-                                    maxlength = "5" required>
-                                    <!-- Above 4 lines restrict the user from typing more than 5 numbers into the zipcode search -->
+                                    type="number" maxlength="5" required>
+                                <!-- Above 4 lines restrict the user from typing more than 5 numbers into the zipcode search -->
                                 <button class="search-btn-rest btn btn-primary" type="submit">Search </button>
                             </div>
                         </form>
@@ -87,10 +93,10 @@
                                     placeholder="What kind of activity are you up for?" required>
 
                                 <input id="search_act_zip" name="search_act_zip" type="number"
-                                    class="search_act_zip form-control" placeholder="Zip Code" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    type = "number"
-                                    maxlength = "5" required>
-                                    <!-- Above 4 lines restrict the user from typing more than 5 numbers into the zipcode search -->
+                                    class="search_act_zip form-control" placeholder="Zip Code"
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    type="number" maxlength="5" required>
+                                <!-- Above 4 lines restrict the user from typing more than 5 numbers into the zipcode search -->
                                 <button class="search-btn-act btn btn-primary" type="submit">Search </button>
                             </div>
                         </form>

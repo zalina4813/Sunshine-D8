@@ -313,7 +313,7 @@ input[type=number] {
 .card {
     color: white;
     background: none;
-    width: 50%;
+    width: 100%;
     border: none;
 }
 
@@ -338,6 +338,13 @@ input[type=number] {
     font-size: 20px;
 }
 
+/* Map Style */
+#map {
+    position: fixed;
+    float: left;
+    width: 450px;
+    height: 450px;
+}
 
 @media screen and (max-width: 601px) { 
 

@@ -364,24 +364,21 @@ $('document').ready(function () {
             type: 'geojson',
             data: {
                 type: 'FeatureCollection',
-                features: []
-            }
-        });
-        map.addLayer({
-            id: 'point',
-            source: 'single-point',
-            type: 'circle',
-            paint: {
-                'circle-radius': 10,
-                'circle-color': '#448EE4'
-            }
-        });
-        // Listen for the `result` event from the Geocoder
-        // `result` event is triggered when a user makes a selection
-        //  Add a marker at the result's coordinates
-        geocoder.on('result', function (e) {
-            map.getSource('single-point').setData(e.result.geometry);
-        });
+                features: [{
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [results[i].coordinates.longitude, results[i].coordinates.latitude]
+                    },
+                    properties: {
+                        title: 'Mapbox',
+                        description: 'Washington, D.C.'
+                    }
+                },]
+    }
+
+    });
+    
     });
 
 });

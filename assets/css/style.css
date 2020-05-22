@@ -334,7 +334,7 @@ button.chooseHere {
 
 #map {
     position: absolute;
-    width: auto;
+    width: 500px;
     height: 450px;
 }
 

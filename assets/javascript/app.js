@@ -44,7 +44,7 @@ $('document').ready(function () {
 
     })
 
-    // ------------------------ Password Requirements -----------------------------
+    // ------------------------ Password Requirements Show/Hide -----------------------------
 
     // This will make the password requirements hidden by default
     $('#PasswordReqs').hide();
@@ -344,10 +344,46 @@ $('document').ready(function () {
 
     }
 
+    // ----------------------------- Map --------------------------------------------
 
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZm9raXR5b2xvIiwiYSI6ImNrYWVnNjZtczJoMWUydG96Zmd6ZDJhN3oifQ.BSs-7QW-NlhNe2mmRuXR4A';
+    var map = new mapboxgl.Map({
+        container: 'map', // Container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // Map style to use
+        center: [-81.760254, 27.994402], // Starting position [lng, lat] coordinates of Walt Disney World Resort
+        zoom: 6, // Starting zoom level
+    });
+    var geocoder = new MapboxGeocoder({ // Initialize the geocoder
+        accessToken: mapboxgl.accessToken, // Set the access token
+        placeholder: 'Type in an Address', //Text displayed in the search bar
+        mapboxgl: mapboxgl, // Set the mapbox-gl instance
+        marker: false, // Do not use the default marker style
+    });
+    // Add the geocoder to the map
+    map.addControl(geocoder);
+    // After the map style has loaded on the page,
+    // add a source layer and default styling for a single point
+    map.on('load', function() {
+        map.addSource('single-point', {
+        type: 'geojson',
+        data: {
+            type: 'FeatureCollection',
+            features: []
+        }
+        });
+        map.addLayer({
+            id: 'point',
+            source: 'single-point',
+            type: 'circle',
+            paint: {
+                'circle-radius': 10,
+                'circle-color': '#448EE4'
+            }
+        });
+        geocoder.on('result', function(e) {
+            map.getSource('single-point').setData(e.result.geometry);
+        });
 
-
-
-
+    });
 
 });

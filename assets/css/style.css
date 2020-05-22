@@ -1,3 +1,4 @@
+/* ---------------- Overall page -------------------------- */
 body, html { 
     background: linear-gradient(0deg, rgba(22, 148, 194, 0.742), rgba(4, 36, 48, 0.742)), 
     /* The next 5 lines of code make the image stay centered on the page, no matter what the viewport size is */
@@ -25,62 +26,27 @@ a {
     color: white;
 }
 
-.bluu {
-    margin-top: 50px;
-}
-
-.navbartextColor {
+h1 {
+    font-family:  'Happy Monkey';font-size: 50px;
     color: white;
-    padding-right: 20px;
-    padding-top: 10px;
-    font-family: 'Happy Monkey';
+    letter-spacing: 5%;
+    line-height: 75px;
 }
-
-.container-intro{
-    margin-top: 150px;
-    margin-left: 50px;
-    width: auto; 
-    padding-left: 30px;
-    margin-bottom: 200px;
-}
-
-h1{
-   font-family:  'Happy Monkey';font-size: 50px;
-   color: white;
-   letter-spacing: 5%;
-   line-height: 75px;
-}
-
-h2{
+ 
+h2 {
     font-family:  'Italiana';font-size: 30px;
     letter-spacing: 5%;
     color: white;
     padding-top: 15px;
 }
-
-h3{
+ 
+h3 {
     font-family:  'Italiana';font-size: 25px;
     letter-spacing: 5%;
     color: white;
     font-weight: bolder;
     padding-top: 15px;
 }
-
-#signUp {
-    margin-top: 5px;
-}
-
-/* Got this modal css from https://www.geeksforgeeks.org/create-responsive-modal-sign-form-website/ */
-/*add full-width input fields*/ 
-input[type=text], 
-input[type=password] { 
-    width: 100%; 
-    padding: 12px 20px; 
-    margin: 8px 0; 
-    display: inline-block; 
-    border: 2px solid #ccc; 
-    box-sizing: border-box; 
-} 
 
 /* set a style for all buttons*/ 
 button { 
@@ -92,15 +58,60 @@ button {
     width: 100%; 
 }
 
-.centerchosenText {
-    margin-top: 50px;
-    text-align: center;
+
+/* -------------------------- Home nav ----------------------------- */
+
+/* Deals with how the navbar looks on the app */
+header {
+    position: relative;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    background: #6b8d97;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
 }
 
-button.chooseHere {
-    margin-top: 70px;
+.logo {
+    padding: 0 20px;
+    box-sizing: border-box;
+    float: left;
+}
+
+/* Keeps the navbar items to the right of the header */
+nav {
+    float: right;
+}
+
+nav ul {
+margin: 0;
+padding: 0;
+display: flex;
+}
+
+nav ul li a  {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20 px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.navbartextColor {
     color: white;
-    width: 50%;
+    padding-right: 20px;
+    padding-top: 10px;
+    font-family: 'Happy Monkey';
+}
+
+/* ------------------------- index.html styling ------------------------------ */
+.container-intro{
+    margin-top: 150px;
+    margin-left: 50px;
+    width: auto; 
+    padding-left: 30px;
+    margin-bottom: 200px;
 }
 
 .cancelbtn {
@@ -111,16 +122,50 @@ button.chooseHere {
     margin-top: 8px;
 }
 
-/*float cancel and signup buttons and add an equal width*/ 
+/* float cancel and signup buttons and add an equal width */ 
 .cancelbtn, 
 .signupbtn { 
     float: left; 
     width: 25% 
 } 
 
-/*add padding to container elements*/ 
-/* .container {  
-}  */
+/* define the close button for the modal */ 
+.close { 
+    position: absolute; 
+    right: 35px; 
+    top: 15px; 
+    color: #000; 
+    font-size: 40px; 
+    font-weight: bold; 
+} 
+
+/* define the close hover and focus effects */ 
+.close:hover, 
+.close:focus { 
+    color: #1694C2; 
+    cursor: pointer; 
+} 
+   
+.clearfix::after { 
+    content: ""; 
+    clear: both; 
+    display: table; 
+} 
+
+/* Hides the arrows from type= "number" */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* ------------------------- Modal styling -------------------------- */
 
 /*define the modal’s background*/ 
 .modal { 
@@ -137,6 +182,48 @@ button.chooseHere {
     padding-top: 60px; 
 } 
 
+/* Got this modal css from https://www.geeksforgeeks.org/create-responsive-modal-sign-form-website/ */
+/*add full-width input fields*/ 
+input[type=text], 
+input[type=password] { 
+    width: 100%; 
+    padding: 12px 20px; 
+    margin: 8px 0; 
+    display: inline-block; 
+    border: 2px solid #ccc; 
+    box-sizing: border-box; 
+} 
+
+/*define the modal-content background*/ 
+.modal-content { 
+    background-color: #fefefe; 
+    margin: 5% auto 15% auto; 
+    border: 1px solid #888; 
+    width: 80%; 
+} 
+
+/* ------------------------ website.html styling ------------------------ */
+
+/* Centers the text in the navbar list and put space between the items */
+.navbarSpacing {
+    margin: 5px 5px 0 3px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.centerchosenText {
+    margin-top: 50px;
+    text-align: center;
+}
+
+button.chooseHere {
+    margin-top: 70px;
+    color: white;
+    width: 50%;
+}
+
 /* This is the modal for the website.html */
 .modal1 { 
     display: none; 
@@ -152,103 +239,6 @@ button.chooseHere {
     padding-top: 60px; 
 } 
 
-/*define the modal-content background*/ 
-.modal-content { 
-    background-color: #fefefe; 
-    margin: 5% auto 15% auto; 
-    border: 1px solid #888; 
-    width: 80%; 
-} 
-
-/*define the close button*/ 
-.close { 
-    position: absolute; 
-    right: 35px; 
-    top: 15px; 
-    color: #000; 
-    font-size: 40px; 
-    font-weight: bold; 
-} 
-
-/*define the close hover and focus effects*/ 
-.close:hover, 
-.close:focus { 
-    color: #1694C2; 
-    cursor: pointer; 
-} 
-   
-.clearfix::after { 
-    content: ""; 
-    clear: both; 
-    display: table; 
-} 
-
-/* Deals with how the navbar looks on the app */
-header {
-    position: relative;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 10px;
-    background: #6b8d97;
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.2);
-}
-
-.logo {
-    color: white;
-    /* height: 50px; */
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 36px;
-    padding: 0 20px;
-    text-align: center;
-    box-sizing: border-box;
-    float: left;
-    font-weight: 500;
-    text-decoration: none;
-}
-
-/* Keeps the navbar items to the right of the header */
-nav {
-    float: right;
-}
-
-/* Centers the text in the navbar list and put space between the items */
-.navbarSpacing {
-    margin: 5px 5px 0 3px;
-}
-
-.clearfix {
-    clear: both;
-}
-
-nav ul {
-margin: 0;
-padding: 0;
-display: flex;
-}
-
-nav ul li {
-    list-style: none;
-}
-
-nav ul li a  {
-    display: block;
-    margin: 10px 0;
-    padding: 10px 20 px;
-    text-decoration: none;
-    font-family: sans-serif;
-    color:#042430;
-}
-
-/* When the user hovers over the a-tag the box surrounding the text will turn yellow,
-took out the color for now */
-nav ul li a.active,
-nav ul li a:hover {
-    /* background:#ffeb3b ; */
-    transition: 0.5s;
-}
-
 .userInputheader {
     height: 75vh;
     display: flex;
@@ -257,29 +247,9 @@ nav ul li a:hover {
     font-family: sans-serif;
 }
 
-.search-field {
-    height: 50px;
+.form-box {
+    background: rgba(0,0,0,0.5);
     padding: 10px;
-    border: navy;
-    border-radius: 25px;
-    outline: none;
-}
-
-.location {
-    width: 200px;
-}
-
-.business {
-    width: 400px;
-}
-
-.search-btn {
-    height: 50px;
-    width: 150px;
-    background: #ffeb3b;
-    border: none;
-    color: #1694C2;
-    border-radius: 25px;
 }
 
 #search_rest_zip,
@@ -287,29 +257,9 @@ nav ul li a:hover {
     padding-left: 22px;
 }
 
-/* Hides the arrows from type= "number" */
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+/* -------------------- Restaurants/ Activities pages ------------------------ */
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-.search-btn:hover{
-    background: #ffc107;
-    cursor: pointer;
-}
-
-.form-box {
-    background: rgba(0,0,0,0.5);
-    padding: 10px;
-}
-
+/* This is where the API text is populated */
 .card {
     color: white;
     background: none;
@@ -322,6 +272,7 @@ input[type=number] {
     background-color: #6b8d97;
 }
 
+/* These are the styling for the appended div inside the card */
 .row1 {
     padding: 10px;
     margin: 10px 0;
@@ -338,8 +289,11 @@ input[type=number] {
     font-size: 20px;
 }
 
-
 @media screen and (max-width: 601px) { 
+
+    #buttonspacing {
+        margin-bottom: 10px;
+    }
 
     .container-intro{ 
         margin-left: 30px;
@@ -350,6 +304,18 @@ input[type=number] {
         width: 100%; 
     } 
 
+    .indexbuttons {
+        margin-top: 10px;
+    }
+
+}
+
+/* ----------------------- Map style ----------------------- */
+
+#map {
+    position: fixed;
+    width: auto;
+    height: 450px;
 }
 
 /* This makes it so the images don't look as bad when the screen size is changed */

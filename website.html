@@ -19,19 +19,17 @@
 <body>
 
     <header>
-        <!-- <a href="#" class="logo">Sunshine D8</a> -->
-        <a href="#">
-            <img alt="W3Schools" src="assets/images/logo1.png" width="300" height="80" class="logo">
+        <a href="https://zalina4813.github.io/Sunshine-D8/website.html">
+        <img alt="W3Schools" src="assets/images/logo1.png" width="300" height="80" class="logo">
 
-            <div class="menu-toggle"></div>
-            <nav>
-                <ul>
-                    <li class="navbarSpacing">
-                        <a href="https://zalina4813.github.io/Sunshine-D8/website.html"class="navbartextColor">Home</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="clearfix"></div>
+        <nav>
+            <ul>
+                <li class="navbarSpacing">
+                    <a href="https://zalina4813.github.io/Sunshine-D8/website.html"class="navbartextColor">Home</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="clearfix"></div>
     </header>
 
     <div class= "container centerchosenText"> 
@@ -50,36 +48,41 @@
         </span>
 
         <div class="container">
-
             <div class="row">
                 <div class="col-md-6">
-                    <!-- Restaurant Search  -->
 
+                    <!-- Restaurant Search  -->
                     <div class="userInputheader">
-                            <form method="GET" target="_self" action="restaurants.html">
+                        <form method="GET" target="_self" action="restaurants.html">
+
                             <h1>Find Restaurants Near You</h1>
                             <div class="form-box">
                                 <input id="search_rest_type" name="search_rest_type" type="text"
                                     class="search_rest_type form-control"
                                     placeholder="What kind of food do you want to eat?" required>
-
+                                
                                 <input id="search_rest_zip" name="search_rest_zip" type="number"
                                     class="search_rest_zip form-control" placeholder="Zip Code" 
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     type = "number"
                                     maxlength = "5" required>
+                                    <!-- https://stackoverflow.com/questions/9555143/html-maxlength-attribute-not-working-on-chrome-and-safari -->
                                     <!-- Above 4 lines restrict the user from typing more than 5 numbers into the zipcode search -->
                                 <button class="search-btn-rest btn btn-primary" type="submit">Search </button>
                             </div>
+                            
                         </form>
 
                     </div>
+
                 </div>
 
                 <div class="col-md-6">
+
                     <!-- Activity Search  -->
                     <div class="userInputheader">
                         <form method="GET" target="_self" action="activities.html">
+
                             <h1>Find Activities Near You</h1>
                             <div class="form-box">
                                 <input id="search_act_type" name="search_act_type" type="text"
@@ -93,13 +96,13 @@
                                     <!-- Above 4 lines restrict the user from typing more than 5 numbers into the zipcode search -->
                                 <button class="search-btn-act btn btn-primary" type="submit">Search </button>
                             </div>
+
                         </form>
 
                     </div>
 
                 </div>
             </div>
-
         </div>
 
     </div>

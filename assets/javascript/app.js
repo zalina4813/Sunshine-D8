@@ -22,6 +22,21 @@ $('document').ready(function () {
         }
     }
 
+    $('.chooseHere').on('click', function() {
+
+        $('.centerchosenText').hide();
+        window.onclick = function (event) {
+
+            // preventDefault();
+            if (event.target == modal) {
+                modal.style.display = "none";
+                $('.centerchosenText').show();
+            }
+
+        }
+
+    })
+
     // ------------------------ Password Requirements -----------------------------
 
     // This will make the password requirements hidden by default

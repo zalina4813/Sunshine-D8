@@ -345,7 +345,6 @@ $('document').ready(function () {
     }
 
     // ----------------------------- Map --------------------------------------------
-
     mapboxgl.accessToken = 'pk.eyJ1IjoiZm9raXR5b2xvIiwiYSI6ImNrYWVnNjZtczJoMWUydG96Zmd6ZDJhN3oifQ.BSs-7QW-NlhNe2mmRuXR4A';
     var map = new mapboxgl.Map({
         container: 'map', // Container ID

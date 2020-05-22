@@ -37,6 +37,13 @@ $('document').ready(function () {
 
     })
 
+    // When the x inside the modal is clicked, the text from before is shown
+    $('.close').on('click', function() {
+
+        $('.centerchosenText').show();
+
+    })
+
     // ------------------------ Password Requirements -----------------------------
 
     // This will make the password requirements hidden by default

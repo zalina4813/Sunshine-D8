@@ -26,8 +26,9 @@
             <div class="menu-toggle"></div>
             <nav>
                 <ul>
-                    <li class="navbarSpacing"><a href="https://zalina4813.github.io/Sunshine-D8/website.html"
-                            class="navbartextColor">Home</a></li>
+                    <li class="navbarSpacing">
+                        <a href="https://zalina4813.github.io/Sunshine-D8/website.html"class="navbartextColor">Home</a>
+                    </li>
                 </ul>
             </nav>
             <div class="clearfix"></div>
@@ -63,7 +64,11 @@
                                     placeholder="What kind of food do you want to eat?" required>
 
                                 <input id="search_rest_zip" name="search_rest_zip" type="number"
-                                    class="search_rest_zip form-control" placeholder="Zip Code" required>
+                                    class="search_rest_zip form-control" placeholder="Zip Code" 
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    type = "number"
+                                    maxlength = "5" required>
+                                    <!-- Above 4 lines restrict the user from typing more than 5 numbers into the zipcode search -->
                                 <button class="search-btn-rest btn btn-primary" type="submit">Search </button>
                             </div>
                         </form>
@@ -82,7 +87,10 @@
                                     placeholder="What kind of activity are you up for?" required>
 
                                 <input id="search_act_zip" name="search_act_zip" type="number"
-                                    class="search_act_zip form-control" placeholder="Zip Code" required>
+                                    class="search_act_zip form-control" placeholder="Zip Code" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    type = "number"
+                                    maxlength = "5" required>
+                                    <!-- Above 4 lines restrict the user from typing more than 5 numbers into the zipcode search -->
                                 <button class="search-btn-act btn btn-primary" type="submit">Search </button>
                             </div>
                         </form>

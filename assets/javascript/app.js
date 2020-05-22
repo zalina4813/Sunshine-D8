@@ -1,7 +1,6 @@
 $('document').ready(function () {
 
     //  -------------------- Search Bar ---------------------------
-
     $('#searchCity').keypress(function (e) {
         // Waiting for the user to press the enter key
         if (e.keyCode === 13) {
@@ -12,7 +11,6 @@ $('document').ready(function () {
 
     })
     // ------------------------ Modal -----------------------------
-
     var modal = document.getElementById('id01');
 
     window.onclick = function (event) {
@@ -44,8 +42,7 @@ $('document').ready(function () {
 
     })
 
-    // ------------------------ Password Requirements -----------------------------
-
+    // ------------------------ Password Requirements Show/Hide -----------------------------
     // This will make the password requirements hidden by default
     $('#PasswordReqs').hide();
     $('#PasswordInput').on('click', function () {
@@ -63,7 +60,6 @@ $('document').ready(function () {
     })
 
     // ------------------------ Restaurants ----------------------------
-
     // grab the restaurant type and the zip code from the query strings in the url
     var foodType = getQueryVariable('search_rest_type');
     var zipCode = getQueryVariable('search_rest_zip');
@@ -344,55 +340,45 @@ $('document').ready(function () {
 
     }
 
+    // ------------------------------ Map API Information -------------------------------- //
 
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZm9raXR5b2xvIiwiYSI6ImNrYWVnNjZtczJoMWUydG96Zmd6ZDJhN3oifQ.BSs-7QW-NlhNe2mmRuXR4A';
+    var map = new mapboxgl.Map({
+        container: 'map', // Container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // Map style to use
+        center: [-81.760254, 27.994402], // Starting position [lng, lat] coordinates of Walt Disney World Resort
+        zoom: 6, // Starting zoom level
+    });
+    var geocoder = new MapboxGeocoder({ // Initialize the geocoder
+        accessToken: mapboxgl.accessToken, // Set the access token
+        placeholder: 'Search for places in Florida', //Text displayed in the search bar
+        mapboxgl: mapboxgl, // Set the mapbox-gl instance
+        marker: false, // Do not use the default marker style
+    });
+    // Add the geocoder to the map
+    map.addControl(geocoder);
+    // After the map style has loaded on the page,
+    // add a source layer and default styling for a single point
+    map.on('load', function () {
+        map.addSource('single-point', {
+            type: 'geojson',
+            data: {
+                type: 'FeatureCollection',
+                features: [{
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [results[i].coordinates.longitude, results[i].coordinates.latitude]
+                    },
+                    properties: {
+                        title: 'Mapbox',
+                        description: 'Washington, D.C.'
+                    }
+                },]
+    }
+
+    });
     
-
-
+    });
 
 });
-
-//this function validates that the restaurant search fields are populated before
-//submitting the restaurant search form
-function validateRestaurantForm() {
-    
-    //find the search fields in the search form for restaurants, then check that the value
-    //of that search field is not empty. If any of them are empty, alert the user, return to the form and do not submit 
-    // the form.
-    var searchRestType = document.forms["rest_search_form"]["search_rest_type"].value;
-    if (searchRestType == "") {
-        alert("Please fill out restaurant type");
-        return false;
-    }   
-
-    var searchRestZip = document.forms["rest_search_form"]["search_rest_zip"].value;
-    if (searchRestZip == "") {
-        alert("Please fill out restaurant zip code");
-        return false;
-    }   
-
-    // If the search fields are properly filled out, find the search form and submit.
-    var searchForm = document.forms["rest_search_form"];
-    searchForm.submit();
-}
-
-// This function validates that the activities fields are filled out properly.
-function validateActivitiesForm() {
-    
-    //Check the activities search type field and make sure it's not empty.
-    var searchRestType = document.forms["search_act_form"]["search_act_type"].value;
-    if (searchRestType == "") {
-        alert("Please fill out activity type");
-        return false;
-    }   
-
-    //check the activities zip code and make sure it's not empty.
-    var searchRestZip = document.forms["search_act_form"]["search_act_zip"].value;
-    if (searchRestZip == "") {
-        alert("Please fill out activity zip code");
-        return false;
-    }   
-
-    //if all fields were filled out correctly, find the form and submit it.
-    var searchForm = document.forms["search_act_form"];
-    searchForm.submit();
-}

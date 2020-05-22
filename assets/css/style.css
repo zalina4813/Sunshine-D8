@@ -1,4 +1,5 @@
-/* ---------------- Overall page -------------------------- */
+/* ------------------------ Overall page -------------------------- */
+
 body, html { 
     background: linear-gradient(0deg, rgba(22, 148, 194, 0.742), rgba(4, 36, 48, 0.742)), 
     /* The next 5 lines of code make the image stay centered on the page, no matter what the viewport size is */
@@ -106,6 +107,7 @@ nav ul li a  {
 }
 
 /* ------------------------- index.html styling ------------------------------ */
+
 .container-intro{
     margin-top: 150px;
     margin-left: 50px;
@@ -163,6 +165,10 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+label.x-ray {
+    margin-bottom: 0;
 }
 
 /* ------------------------- Modal styling -------------------------- */
@@ -263,7 +269,7 @@ button.chooseHere {
 .card {
     color: white;
     background: none;
-    width: 50%;
+    width: 100%;
     border: none;
 }
 
@@ -289,6 +295,14 @@ button.chooseHere {
     font-size: 20px;
 }
 
+/* ----------------------- Map style ----------------------- */
+
+#map {
+    position: fixed;
+    width: 400px;
+    height: 450px;
+}
+
 @media screen and (max-width: 601px) { 
 
     #buttonspacing {
@@ -310,20 +324,18 @@ button.chooseHere {
 
 }
 
-/* ----------------------- Map style ----------------------- */
-
-#map {
-    position: fixed;
-    width: auto;
-    height: 450px;
-}
-
 /* This makes it so the images don't look as bad when the screen size is changed */
 @media screen and (max-width: 769px) {
 
 .row1 img {
     width: 100%;
     height: 150px;
+}
+
+#map {
+    position: absolute;
+    width: 500px;
+    height: 450px;
 }
 
 }

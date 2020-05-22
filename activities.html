@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunshine D8</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
+    <!-- Map API -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css' type='text/css' />
     <!-- Custom Fonts  -->
     <link href='https://fonts.googleapis.com/css?family=Happy Monkey' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Italiana' rel='stylesheet'>
@@ -33,23 +38,28 @@
         <div class="clearfix"></div>
     </header>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+    <div class= "container">
+        <div class= "row">
 
-                <div class="card">
+            <div class= "col-md-6">
 
-                    <div class="card-header">
-                        Activities Found
+                <div class= "card">
+
+                    <div class= "card-header">
+                        Restaurants Found
                     </div>
 
-                    <div id="activity-list">
+                    <div id= "restaurant-list">
 
                     </div>
 
                 </div>
 
             </div>
+            <div class= "col-md-6">
+                <div class= "card" id= "map"></div>
+            </div>
+
         </div>
     </div>
 

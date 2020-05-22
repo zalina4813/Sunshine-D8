@@ -338,9 +338,54 @@ $('document').ready(function () {
     }
 
 
-
-
+    
 
 
 
 });
+
+//this function validates that the restaurant search fields are populated before
+//submitting the restaurant search form
+function validateRestaurantForm() {
+    
+    //find the search fields in the search form for restaurants, then check that the value
+    //of that search field is not empty. If any of them are empty, alert the user, return to the form and do not submit 
+    // the form.
+    var searchRestType = document.forms["rest_search_form"]["search_rest_type"].value;
+    if (searchRestType == "") {
+        alert("Please fill out restaurant type");
+        return false;
+    }   
+
+    var searchRestZip = document.forms["rest_search_form"]["search_rest_zip"].value;
+    if (searchRestZip == "") {
+        alert("Please fill out restaurant zip code");
+        return false;
+    }   
+
+    // If the search fields are properly filled out, find the search form and submit.
+    var searchForm = document.forms["rest_search_form"];
+    searchForm.submit();
+}
+
+// This function validates that the activities fields are filled out properly.
+function validateActivitiesForm() {
+    
+    //Check the activities search type field and make sure it's not empty.
+    var searchRestType = document.forms["search_act_form"]["search_act_type"].value;
+    if (searchRestType == "") {
+        alert("Please fill out activity type");
+        return false;
+    }   
+
+    //check the activities zip code and make sure it's not empty.
+    var searchRestZip = document.forms["search_act_form"]["search_act_zip"].value;
+    if (searchRestZip == "") {
+        alert("Please fill out activity zip code");
+        return false;
+    }   
+
+    //if all fields were filled out correctly, find the form and submit it.
+    var searchForm = document.forms["search_act_form"];
+    searchForm.submit();
+}

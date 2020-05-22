@@ -55,16 +55,17 @@
                     <!-- Restaurant Search  -->
 
                     <div class="userInputheader">
-                            <form method="GET" target="_self" action="restaurants.html">
+                            <!-- <form method="GET" target="_self" action="restaurants.html"> -->
+                            <form id="rest_search_form">
                             <h1>Find Restaurants Near You</h1>
                             <div class="form-box">
-                                <input id="search_rest_type" name="search_rest_type" type="text"
+                                <input id="search_rest_type" name="search_rest_type" type="text" 
                                     class="search_rest_type form-control"
                                     placeholder="What kind of food do you want to eat?">
 
                                 <input id="search_rest_zip" name="search_rest_zip" type="text"
                                     class="search_rest_zip form-control" placeholder="Zip Code">
-                                <button class="search-btn-rest btn btn-primary" type="submit">Search </button>
+                                <button class="search-btn-rest btn btn-primary" type="button" onclick="return validateRestaurantForm()">Search </button>
                             </div>
                         </form>
 
@@ -74,7 +75,7 @@
                 <div class="col-md-6">
                     <!-- Activity Search  -->
                     <div class="userInputheader">
-                        <form method="GET" target="_self" action="activities.html">
+                        <form id="search_act_form">
                             <h1>Find Activities Near You</h1>
                             <div class="form-box">
                                 <input id="search_act_type" name="search_act_type" type="text"
@@ -83,7 +84,7 @@
 
                                 <input id="search_act_zip" name="search_act_zip" type="text"
                                     class="search_act_zip form-control" placeholder="Zip Code">
-                                <button class="search-btn-act btn btn-primary" type="submit">Search </button>
+                                <button class="search-btn-act btn btn-primary" type="button" onclick="return validateActivitiesForm()">Search </button>
                             </div>
                         </form>
 

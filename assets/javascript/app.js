@@ -338,9 +338,52 @@ $('document').ready(function () {
     }
 
 
-
-
+    
 
 
 
 });
+
+function validateRestaurantForm() {
+    
+    
+    var searchRestType = document.forms["rest_search_form"]["search_rest_type"].value;
+    if (searchRestType == "") {
+        alert("Please fill out restaurant type");
+        return false;
+    }   
+
+    var searchRestZip = document.forms["rest_search_form"]["search_rest_zip"].value;
+    if (searchRestZip == "") {
+        alert("Please fill out restaurant zip code");
+        return false;
+    }   
+
+    var searchForm = document.forms["rest_search_form"];
+    searchForm.method = "GET";
+    searchForm.action = "restaurants.html";
+    searchForm.target = "_self";
+    searchForm.submit();
+}
+
+function validateActivitiesForm() {
+    
+    
+    var searchRestType = document.forms["search_act_form"]["search_act_type"].value;
+    if (searchRestType == "") {
+        alert("Please fill out activity type");
+        return false;
+    }   
+
+    var searchRestZip = document.forms["search_act_form"]["search_act_zip"].value;
+    if (searchRestZip == "") {
+        alert("Please fill out activity zip code");
+        return false;
+    }   
+
+    var searchForm = document.forms["search_act_form"];
+    searchForm.method = "GET";
+    searchForm.action = "activities.html";
+    searchForm.target = "_self";
+    searchForm.submit();
+}

@@ -1,7 +1,6 @@
 $('document').ready(function () {
 
     //  -------------------- Search Bar ---------------------------
-
     $('#searchCity').keypress(function (e) {
         // Waiting for the user to press the enter key
         if (e.keyCode === 13) {
@@ -12,7 +11,6 @@ $('document').ready(function () {
 
     })
     // ------------------------ Modal -----------------------------
-
     var modal = document.getElementById('id01');
 
     window.onclick = function (event) {
@@ -45,7 +43,6 @@ $('document').ready(function () {
     })
 
     // ------------------------ Password Requirements Show/Hide -----------------------------
-
     // This will make the password requirements hidden by default
     $('#PasswordReqs').hide();
     $('#PasswordInput').on('click', function () {
@@ -63,7 +60,6 @@ $('document').ready(function () {
     })
 
     // ------------------------ Restaurants ----------------------------
-
     // grab the restaurant type and the zip code from the query strings in the url
     var foodType = getQueryVariable('search_rest_type');
     var zipCode = getQueryVariable('search_rest_zip');
@@ -344,7 +340,7 @@ $('document').ready(function () {
 
     }
 
-    // ----------------------------- Map --------------------------------------------
+    // ------------------------------ Map API Information -------------------------------- //
 
     mapboxgl.accessToken = 'pk.eyJ1IjoiZm9raXR5b2xvIiwiYSI6ImNrYWVnNjZtczJoMWUydG96Zmd6ZDJhN3oifQ.BSs-7QW-NlhNe2mmRuXR4A';
     var map = new mapboxgl.Map({
@@ -355,7 +351,7 @@ $('document').ready(function () {
     });
     var geocoder = new MapboxGeocoder({ // Initialize the geocoder
         accessToken: mapboxgl.accessToken, // Set the access token
-        placeholder: 'Type in an Address', //Text displayed in the search bar
+        placeholder: 'Search for places in Florida', //Text displayed in the search bar
         mapboxgl: mapboxgl, // Set the mapbox-gl instance
         marker: false, // Do not use the default marker style
     });
@@ -363,13 +359,13 @@ $('document').ready(function () {
     map.addControl(geocoder);
     // After the map style has loaded on the page,
     // add a source layer and default styling for a single point
-    map.on('load', function() {
+    map.on('load', function () {
         map.addSource('single-point', {
-        type: 'geojson',
-        data: {
-            type: 'FeatureCollection',
-            features: []
-        }
+            type: 'geojson',
+            data: {
+                type: 'FeatureCollection',
+                features: []
+            }
         });
         map.addLayer({
             id: 'point',
@@ -380,10 +376,12 @@ $('document').ready(function () {
                 'circle-color': '#448EE4'
             }
         });
-        geocoder.on('result', function(e) {
+        // Listen for the `result` event from the Geocoder
+        // `result` event is triggered when a user makes a selection
+        //  Add a marker at the result's coordinates
+        geocoder.on('result', function (e) {
             map.getSource('single-point').setData(e.result.geometry);
         });
-
     });
 
 });

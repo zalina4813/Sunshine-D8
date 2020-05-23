@@ -232,7 +232,6 @@ $('document').ready(function () {
             }
 
         }
-        console.log('Query string paramter %s not found', variable);
     }
 
     // using a list of restaurants from the yelp api, we will display a list of restaurants on the search page for restaurants.
@@ -328,7 +327,6 @@ $('document').ready(function () {
             features: []
         };
 
-        
         for(var i = 0; i < response.businesses.length; i++) {
             var feature = {
                 type: 'Feature',
@@ -381,7 +379,6 @@ $('document').ready(function () {
             .addTo(map);
         });  
 
-
     });
 
     // This function will build ajax settings to be used on the yelp api for a requested activity type in a specific zipcode.
@@ -421,7 +418,6 @@ $('document').ready(function () {
             }
 
         }
-        console.log('Query string paramter %s not found', variable);
     }
 
     //we pass in the settings that come from the build settings function and pass it into an ajax call.
@@ -433,8 +429,6 @@ $('document').ready(function () {
 
         //once we have the list of activities, we append them to the display div. 
         //But first we have to empty the previous list in the display div
-
-        console.log(response.businesses);
 
     });
 

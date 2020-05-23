@@ -185,8 +185,6 @@ $('document').ready(function () {
         //once we have the list of restaurants, we append them to the display div. 
         //But first we have to empty the previous list in the display div
 
-        console.log(response.businesses)
-
     });
 
     // This function will build ajax settings to be used on the yelp api for a requested restaurant type in a specific zipcode.
@@ -247,13 +245,13 @@ $('document').ready(function () {
             // This is what everything is appended to so that it can be sent to the webpage
             var containing = $('<div>').addClass('row1');
 
+            // Appends the containing div to the div with the id stated below
+            $('#restaurant-list').append(containing);
+
             // This adds the images that Yelp provides
             var image = document.createElement('img');
             image.src = list[i].image_url;
             containing.append(image);
-
-            // Appends the containing div to the div with the id stated below
-            $('#restaurant-list').append(containing);
 
             // This will add the names of the restaurants in the users area
             var restaurantName = document.createElement('div');
@@ -286,22 +284,16 @@ $('document').ready(function () {
 
             // Create anchor element. 
             var YelpReview = document.createElement('a');
-
             // Create the text node for anchor element. 
             var link = document.createTextNode("Click Here to See Reviews");
-
             // Append the text node to anchor element. 
             YelpReview.appendChild(link);
-
             // Set the title. 
             YelpReview.title = "Click Here to See Reviews";
-
             // Set the href property. 
             YelpReview.href = YelpReviewPageURL;
-
             // Review Page will open up on another tab when the link is clicked
             YelpReview.target = ('_blank')
-
             // Append the anchor element to the body. 
             containing.append(YelpReview);
 
@@ -455,13 +447,13 @@ $('document').ready(function () {
             // This is what everything is appended to so that it can be sent to the webpage
             var containing = $('<div>').addClass('row1');
 
+            // Appends the containing div to the div with the id stated below
+            $('#activity-list').append(containing);
+
             // This adds the images that Yelp provides
             var image = document.createElement('img');
             image.src = list[i].image_url;
             containing.append(image);
-
-            // Appends the containing div to the div with the id stated below
-            $('#activity-list').append(containing);
 
             // This will add the names of the restaurants in the users area
             var actName = document.createElement('div');
@@ -494,22 +486,16 @@ $('document').ready(function () {
 
             // Create anchor element. 
             var YelpReview = document.createElement('a');
-
             // Create the text node for anchor element. 
             var link = document.createTextNode("Click Here to See Reviews");
-
             // Append the text node to anchor element. 
             YelpReview.appendChild(link);
-
             // Set the title. 
             YelpReview.title = "Click Here to See Reviews";
-
             // Set the href property. 
             YelpReview.href = YelpReviewPageURL;
-
             // Review Page will open up on another tab when the link is clicked
             YelpReview.target = ('_blank')
-
             // Append the anchor element to the body. 
             containing.append(YelpReview);
 

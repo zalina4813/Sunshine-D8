@@ -29,7 +29,14 @@ $('document').ready(function () {
     $('#PasswordInput').on('change', function() {
 
         let password= $('#PasswordInput').val();
+        let passwordverify= $('#PasswordVerify').val();
         validpassword= password.match(/^(?=.*[0-9])(?=.*[*!@$#&]).{8,32}$/)
+        samepassword= password === passwordverify;
+        if (samepassword) {
+            $('#PasswordVerify').css('border-color', 'green')
+        } else {
+            $('#PasswordVerify').css('border-color', 'red')
+        }
         if (validpassword) {
             $('#PasswordInput').css('border-color', 'green')
         } else {

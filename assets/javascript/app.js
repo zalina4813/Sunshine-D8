@@ -203,7 +203,7 @@ $('document').ready(function () {
                 "Authorization": "Bearer RbyX-dmkMHxvWjHEdJBshMdh3pj6Pd0e3IFg8l1C9oi3K6VS8IRi67-EKElLHLXtxedgbOhp06B2LMYXCdeIGf2JEmDbmLMmwc_50P77YlW1jYTiFaJQbUt9--u-XnYx",
                 "Access-Control-Allow-Origin": "*",
                 "Content-Type": "application/json",
-                "Origin": "https://cors-anywhere.herokuapp.com/"
+                // "Origin": "https://cors-anywhere.herokuapp.com/"
             },
         };
 
@@ -399,7 +399,7 @@ $('document').ready(function () {
                 "Authorization": "Bearer LTNRlSZmYhThNo5HI02B6pLpUCQLroUJQxAdoaXXeHeNBRXvJtX6WNGkm1npW2-SZRymxgdp_I73csTFQd3xsemq4d3lLm438x8oP7AGR5eJAagIlkt8KlVC84HIXnYx",
                 "Access-Control-Allow-Origin": "*",
                 "Content-Type": "application/json",
-                "Origin": "https://cors-anywhere.herokuapp.com"
+                // "Origin": "https://cors-anywhere.herokuapp.com"
             },
         };
 

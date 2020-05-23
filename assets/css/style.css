@@ -305,23 +305,27 @@ button.chooseHere {
 }
 
 .marker {
-    background-image: url('marker-icon.png');
-    background-size: cover;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
+  background-image: url('marker-icon.png');
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+}
 
-  .mapboxgl-popup {
-    max-width: 200px;
-  }
+.mapboxgl-popup {
+  max-width: 200px;
+}
   
-  .mapboxgl-popup-content {
+.mapboxgl-popup-content {
+  color: black;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h3.mapboxgl-popup-close-button {
     color: black;
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-  }
+}
 
 @media screen and (max-width: 601px) { 
 

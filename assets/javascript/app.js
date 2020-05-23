@@ -1,15 +1,58 @@
 $('document').ready(function () {
 
-    //  -------------------- Search Bar ---------------------------
-    $('#searchCity').keypress(function (e) {
-        // Waiting for the user to press the enter key
-        if (e.keyCode === 13) {
-            console.log('blue')
-            // This will clear the input field that the user typed into
-            $('#city').val('')
+    //  -------------------- Sign Up Form ---------------------------
+    
+    var validemail;
+    var validpassword;
+    var samepassword;
+
+    const controlbutton= function() { 
+
+        // Sign up button will be disabled until all three of these are true
+        $('.signupbtn').attr('disabled', !(validemail && validpassword && samepassword))
+
+    }
+
+    $('#EmailInput').on('change', function() {
+
+        let email= $('#EmailInput').val();
+        validemail= validator.isEmail(email)
+        if (validemail) {
+            $('#EmailInput').css('border-color', 'green')
+        } else {
+            $('#EmailInput').css('border-color', 'red')
         }
+        controlbutton();
 
     })
+
+    $('#PasswordInput').on('change', function() {
+
+        let password= $('#PasswordInput').val();
+        validpassword= password.match(/^(?=.*[0-9])(?=.*[*!@$#&]).{8,32}$/)
+        if (validpassword) {
+            $('#PasswordInput').css('border-color', 'green')
+        } else {
+            $('#PasswordInput').css('border-color', 'red')
+        }
+        controlbutton();
+
+    }) 
+
+    $('#PasswordVerify').on('change', function() {
+
+        let password= $('#PasswordInput').val();
+        let passwordverify= $('#PasswordVerify').val();
+        samepassword= password === passwordverify;
+        if (samepassword) {
+            $('#PasswordVerify').css('border-color', 'green')
+        } else {
+            $('#PasswordVerify').css('border-color', 'red')
+        }
+        controlbutton();
+
+    })
+
     // ------------------------ Modal -----------------------------
     var modal = document.getElementById('id01');
 
@@ -71,6 +114,74 @@ $('document').ready(function () {
         //using the response list, we build a list of restaurants and put them in an un-ordered list.
         var listOfRestaurants = buildRestaurantList(response.businesses);
 
+        // build a geojson array of restaurant markers to add to the map later
+        var geojson = {
+            type: 'FeatureCollection',
+            features: []
+        };
+        
+        for(var i = 0; i < response.businesses.length; i++) {
+            var feature = {
+                type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [response.businesses[i].coordinates.longitude, response.businesses[i].coordinates.latitude]
+              },
+              properties: {
+                title: response.businesses[i].name,
+                description:response.businesses[i].name
+              }
+            }
+
+            geojson.features.push(feature);
+        }
+        
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZm9raXR5b2xvIiwiYSI6ImNrYWVnNjZtczJoMWUydG96Zmd6ZDJhN3oifQ.BSs-7QW-NlhNe2mmRuXR4A';
+        
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/light-v10',
+            center: [response.region.center.longitude, response.region.center.latitude],
+            zoom: 10
+        });
+
+        var geocoder = new MapboxGeocoder({ // Initialize the geocoder
+            accessToken: mapboxgl.accessToken, // Set the access token
+            placeholder: 'Search for places in Florida', //Text displayed in the search bar
+            mapboxgl: mapboxgl, // Set the mapbox-gl instance
+            marker: false, // Do not use the default marker style
+        });
+
+        // Add the geocoder to the map
+        map.addControl(geocoder);
+        // Add zoom and rotation controls to the map.
+        map.addControl(new mapboxgl.NavigationControl());
+        
+
+        // add markers to map
+        geojson.features.forEach(function(marker) {
+
+            // create a HTML element for each feature
+            var el = document.createElement('div');
+            el.className = 'marker';
+        
+            // make a marker for each feature and add to the map
+            new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+            .addTo(map);
+        });
+
+    });
+
+    //we pass in the settings that come from the build settings function and pass it into an ajax call.
+    //then we wait for the response to come back before displaying the restaurant list;
+    $.ajax(buildSettingsForRestaurantSearch(foodType, zipCode)).then(function (response) {
+
+        //using the response list, we build a list of restaurants and put them in an un-ordered list.
+        var listOfRestaurants = buildRestaurantList(response.businesses);
+
         //once we have the list of restaurants, we append them to the display div. 
         //But first we have to empty the previous list in the display div
 
@@ -92,6 +203,7 @@ $('document').ready(function () {
                 "Authorization": "Bearer RbyX-dmkMHxvWjHEdJBshMdh3pj6Pd0e3IFg8l1C9oi3K6VS8IRi67-EKElLHLXtxedgbOhp06B2LMYXCdeIGf2JEmDbmLMmwc_50P77YlW1jYTiFaJQbUt9--u-XnYx",
                 "Access-Control-Allow-Origin": "*",
                 "Content-Type": "application/json",
+                "Origin": "https://cors-anywhere.herokuapp.com/"
             },
         };
 
@@ -100,6 +212,7 @@ $('document').ready(function () {
 
     // stackoverflow https://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
     // this function will parse a query string parameter from the url and return the data of that parameter to you
+    // This grabs the zip code and activity/restaurant from the url and returns it to the document to be used
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
         var vars = query.split('&');
@@ -145,7 +258,7 @@ $('document').ready(function () {
             // This will add the names of the restaurants in the users area
             var restaurantName = document.createElement('div');
             restaurantName = list[i].name;
-            containing.append(restaurantName).addClass('bluu');
+            containing.append(restaurantName)
 
             linebreaks();
 
@@ -203,18 +316,71 @@ $('document').ready(function () {
     var actType = getQueryVariable('search_act_type');
     var zipCode = getQueryVariable('search_act_zip');
 
-    //we pass in the settings that come from the build settings function and pass it into an ajax call.
+     //we pass in the settings that come from the build settings function and pass it into an ajax call.
     //then we wait for the response to come back before displaying the activity list;
     $.ajax(buildSettingsForActivitySearch(actType, zipCode)).then(function (response) {
 
         //using the response list, we build a list of activities and put them in an un-ordered list.
         var listOfActivities = buildActivityList(response.businesses);
 
-        //once we have the list of activities, we append them to the display div. 
-        //But first we have to empty the previous list in the display div
+        // build a geojson array of activities markers to add to the map later
+         var geojson = {
+            type: 'FeatureCollection',
+            features: []
+        };
 
-        console.log(response.businesses);
-        console.log("hello");
+        
+        for(var i = 0; i < response.businesses.length; i++) {
+            var feature = {
+                type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [response.businesses[i].coordinates.longitude, response.businesses[i].coordinates.latitude]
+              },
+              properties: {
+                title: response.businesses[i].name,
+                description:response.businesses[i].name
+              }
+            }
+
+            geojson.features.push(feature);
+        }
+
+        
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZm9raXR5b2xvIiwiYSI6ImNrYWVnNjZtczJoMWUydG96Zmd6ZDJhN3oifQ.BSs-7QW-NlhNe2mmRuXR4A';
+        var map = new mapboxgl.Map({
+            container: 'map-activities',
+            style: 'mapbox://styles/mapbox/light-v10',
+            center: [response.region.center.longitude, response.region.center.latitude],
+            zoom: 8
+        })
+        var geocoder = new MapboxGeocoder({ // Initialize the geocoder
+            accessToken: mapboxgl.accessToken, // Set the access token
+            placeholder: 'Search for places in Florida', //Text displayed in the search bar
+            mapboxgl: mapboxgl, // Set the mapbox-gl instance
+            marker: false, // Do not use the default marker style
+        });
+
+        // Add the geocoder to the map
+        map.addControl(geocoder);
+        // Add zoom and rotation controls to the map.
+        map.addControl(new mapboxgl.NavigationControl());
+
+        
+        // add markers to map
+        geojson.features.forEach(function(marker) {
+
+            // create a HTML element for each feature
+            var el = document.createElement('div');
+            el.className = 'marker';
+        
+            // make a marker for each feature and add to the map
+            new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+            .addTo(map);
+        });  
 
 
     });
@@ -230,9 +396,10 @@ $('document').ready(function () {
             "method": "GET",
             "timeout": 0,
             "headers": {
-                "Authorization": "Bearer RbyX-dmkMHxvWjHEdJBshMdh3pj6Pd0e3IFg8l1C9oi3K6VS8IRi67-EKElLHLXtxedgbOhp06B2LMYXCdeIGf2JEmDbmLMmwc_50P77YlW1jYTiFaJQbUt9--u-XnYx",
+                "Authorization": "Bearer LTNRlSZmYhThNo5HI02B6pLpUCQLroUJQxAdoaXXeHeNBRXvJtX6WNGkm1npW2-SZRymxgdp_I73csTFQd3xsemq4d3lLm438x8oP7AGR5eJAagIlkt8KlVC84HIXnYx",
                 "Access-Control-Allow-Origin": "*",
                 "Content-Type": "application/json",
+                "Origin": "https://cors-anywhere.herokuapp.com"
             },
         };
 
@@ -258,7 +425,19 @@ $('document').ready(function () {
         console.log('Query string paramter %s not found', variable);
     }
 
+    //we pass in the settings that come from the build settings function and pass it into an ajax call.
+    //then we wait for the response to come back before displaying the activity list;
+    $.ajax(buildSettingsForActivitySearch(actType, zipCode)).then(function (response) {
 
+        //using the response list, we build a list of activities and put them in an un-ordered list.
+        var listOfActivities = buildActivityList(response.businesses);
+
+        //once we have the list of activities, we append them to the display div. 
+        //But first we have to empty the previous list in the display div
+
+        console.log(response.businesses);
+
+    });
 
     function buildActivityList(list) {
 
@@ -287,7 +466,7 @@ $('document').ready(function () {
             // This will add the names of the restaurants in the users area
             var actName = document.createElement('div');
             actName = list[i].name;
-            containing.append(actName).addClass('bluu');
+            containing.append(actName);
 
             linebreaks();
 
@@ -341,44 +520,5 @@ $('document').ready(function () {
     }
 
     // ------------------------------ Map API Information -------------------------------- //
-
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZm9raXR5b2xvIiwiYSI6ImNrYWVnNjZtczJoMWUydG96Zmd6ZDJhN3oifQ.BSs-7QW-NlhNe2mmRuXR4A';
-    var map = new mapboxgl.Map({
-        container: 'map', // Container ID
-        style: 'mapbox://styles/mapbox/streets-v11', // Map style to use
-        center: [-81.760254, 27.994402], // Starting position [lng, lat] coordinates of Walt Disney World Resort
-        zoom: 6, // Starting zoom level
-    });
-    var geocoder = new MapboxGeocoder({ // Initialize the geocoder
-        accessToken: mapboxgl.accessToken, // Set the access token
-        placeholder: 'Search for places in Florida', //Text displayed in the search bar
-        mapboxgl: mapboxgl, // Set the mapbox-gl instance
-        marker: false, // Do not use the default marker style
-    });
-    // Add the geocoder to the map
-    map.addControl(geocoder);
-    // After the map style has loaded on the page,
-    // add a source layer and default styling for a single point
-    map.on('load', function () {
-        map.addSource('single-point', {
-            type: 'geojson',
-            data: {
-                type: 'FeatureCollection',
-                features: [{
-                    type: 'Feature',
-                    geometry: {
-                        type: 'Point',
-                        coordinates: [results[i].coordinates.longitude, results[i].coordinates.latitude]
-                    },
-                    properties: {
-                        title: 'Mapbox',
-                        description: 'Washington, D.C.'
-                    }
-                },]
-    }
-
-    });
-    
-    });
 
 });

@@ -15,7 +15,7 @@
     <!-- Our Stylesheet  -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- X-ray link -->
-    <link rel="stylesheet" href="./x-ray-master/dist/js/x-ray.js">
+    <link rel="stylesheet" href="./node_modules/x-ray/dist/js/x-ray.min.js">
 </head>
 
 <body>
@@ -39,11 +39,11 @@
                     title="Close Modal">×
                 </span>
                 <!-- This is the sign up form that will pop up inside of the modal -->
-                <form class="modal-content animate" action="./website.html">
+                <form class="modal-content animate">
                     
                     <div class= "container" id= "Email">
                         <label><b>Email</b></label>
-                        <input id= "EmailInput" type="text" placeholder="Enter Email">
+                        <input id= "EmailInput" type="text" placeholder="Enter Email" require>
                     </div>
 
                     <!-- This is a list of what the user needs to put in as a password -->
@@ -58,12 +58,12 @@
                     
                     <div class= "container" id= "Password">
                         <label><b>Password</b></label>
-                        <input class= "pw3" id= "PasswordInput" type="password" placeholder="Enter Password">
+                        <input class= "pw3" id= "PasswordInput" type="password" placeholder="Enter Password" require>
                     </div>
 
                     <div class= "container" id= "Password2">
                         <label></label><b>Repeat Password</b></label>
-                        <input class= "pw3" id= "PasswordVerify" type="password" placeholder="Repeat Password">
+                        <input class= "pw3" id= "PasswordVerify" type="password" placeholder="Repeat Password" require>
                     </div>
 
                     <!-- This is from the JS library, showing and hiding the passwords that the user types in -->
@@ -75,13 +75,16 @@
                     </div>
 
                     <div class="container clearfix" id= "buttonspacing">
-
+                        <span>
                         <button type="button" onclick="document.getElementById('id01').style.display='none'"
                             class="btn btn-secondary cancelbtn">Cancel
                         </button>
                                 
-                        <a href="./website.html" class="btn btn-primary signupbtn">Sign Up</a>
-                                
+                        <button onclick= "window.location.href= 'https://zalina4813.github.io/Sunshine-D8/website.html'" class= "btn btn-primary signupbtn" type="button">
+                            Sign Up
+                        </button>
+                        </span>
+
                     </div>
 
                 </form>
@@ -91,8 +94,10 @@
     </div>
 </div>
 
-
-<script src="./x-ray-master/dist/js/x-ray.js"></script>
+<!-- Email Validator -->
+<script type="text/javascript" src="./node_modules/validator/validator.min.js"></script> 
+<!-- Checkbox to hide and show password -->
+<script src="./node_modules/x-ray/dist/js/x-ray.min.js"></script>
 <script>
 	xray.init();
 </script>

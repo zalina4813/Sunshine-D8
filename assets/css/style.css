@@ -14,6 +14,7 @@ body, html {
     padding: 0;
     overflow-x: hidden; 
     font-family: 'Happy Monkey';
+    width: 100%;
 }   
 
 /* Makes it so that when the "links" on the navbar are hovered over
@@ -55,10 +56,8 @@ button {
     color: black; 
     padding: 14px 20px; 
     margin: 8px 0; 
-    cursor: pointer; 
-    width: 100%; 
+    cursor: pointer;  
 }
-
 
 /* -------------------------- Home nav ----------------------------- */
 
@@ -118,10 +117,6 @@ nav ul li a  {
 
 .cancelbtn {
     margin-right: 10px;
-}
-
-.signupbtn {
-    margin-top: 8px;
 }
 
 /* float cancel and signup buttons and add an equal width */ 
@@ -352,16 +347,16 @@ button.chooseHere {
 /* This makes it so the images don't look as bad when the screen size is changed */
 @media screen and (max-width: 769px) {
 
-.row1 img {
-    width: 100%;
-    height: 150px;
-}
+    .row1 img {
+        width: 100%;
+        height: 150px;
+    }
 
-#map {
-    position: absolute;
-    width: 500px;
-    height: 450px;
-}
+    #map {
+        position: absolute;
+        width: 500px;
+        height: 450px;
+    }
 
 }
 
@@ -380,4 +375,4 @@ button.chooseHere {
         font-family: sans-serif;
     }
     
-    }
+}

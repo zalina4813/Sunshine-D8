@@ -303,6 +303,31 @@ button.chooseHere {
     height: 450px;
 }
 
+#map-activities {
+    position: fixed;
+    width: 400px;
+    height: 450px;
+}
+
+.marker {
+    background-image: url('marker-icon.png');
+    background-size: cover;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .mapboxgl-popup {
+    max-width: 200px;
+  }
+  
+  .mapboxgl-popup-content {
+    color: black;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+  }
+
 @media screen and (max-width: 601px) { 
 
     #buttonspacing {
